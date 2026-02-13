@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ramya ❤️ Yuvaraj</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@ body{
   overflow-x:hidden;
 }
 
-/* PARALLAX LAYERS */
+/* Parallax */
 .parallax-bg{
   position:fixed;
   width:100%;
@@ -37,7 +37,7 @@ body{
   z-index:-2;
 }
 
-/* INTRO */
+/* Intro */
 .intro{
   height:100vh;
   display:flex;
@@ -49,21 +49,11 @@ body{
 .title{font-size:3rem;opacity:0;}
 .subtitle{opacity:0;margin-top:20px;}
 
-/* TIMELINE */
+/* Timeline */
 .timeline{padding:100px 20px;text-align:center;}
 .moment{margin:150px 0;font-size:1.6rem;opacity:0;transform:translateY(60px);}
 
-/* TYPEWRITER */
-.loveletter{
-  max-width:800px;
-  margin:0 auto;
-  font-size:1.3rem;
-  min-height:200px;
-  border-right:2px solid white;
-  white-space:pre-line;
-}
-
-/* TEMPLE */
+/* Temple */
 .temple-section{
   position:relative;
   height:400px;
@@ -85,10 +75,7 @@ body{
   50%{transform:scale(1.2);opacity:1;}
 }
 
-/* FLIGHT */
-#flightSVG{width:100%;height:200px;margin-top:50px;}
-
-/* COUPLE */
+/* Couple */
 .couple{
   height:300px;
   display:flex;
@@ -99,7 +86,7 @@ body{
   opacity:0;
 }
 
-/* PARTICLES */
+/* Particles */
 canvas{
   position:fixed;
   top:0;
@@ -108,7 +95,54 @@ canvas{
   z-index:-1;
 }
 
-/* MUSIC BUTTON */
+/* Love Letter Button */
+.love-btn{
+  background:gold;
+  border:none;
+  padding:12px 25px;
+  font-size:1.1rem;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* Modal */
+#letterModal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+#letterBox{
+  max-width:700px;
+  background:#0b1a3a;
+  padding:40px;
+  border-radius:15px;
+  position:relative;
+  text-align:center;
+}
+#letterContent{
+  white-space:pre-line;
+  font-size:1.2rem;
+  line-height:1.8;
+  min-height:300px;
+  border-right:2px solid white;
+}
+.close{
+  position:absolute;
+  top:15px;
+  right:20px;
+  cursor:pointer;
+  font-size:1.5rem;
+}
+
+/* Music Button */
 .music-btn{
   position:fixed;
   top:20px;
@@ -129,103 +163,123 @@ canvas{
 <div class="parallax-stars"></div>
 <canvas id="particles"></canvas>
 
-<div class="music-btn" onclick="playMusic()">🎵 Play Music</div>
+<div class="music-btn" onclick="playMusic()">🎵 Music</div>
 <audio id="bgMusic" loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8f49b4f42e.mp3" type="audio/mpeg">
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8f49b4f42e.mp3" type="audio/mpeg">
 </audio>
 
 <section class="intro">
-  <h1 class="title">Ramya ❤️ Yuvaraj</h1>
-  <div class="subtitle">A Love Written In Destiny</div>
+<h1 class="title">Ramya ❤️ Yuvaraj</h1>
+<div class="subtitle">A Love Written In Destiny</div>
+
+<div style="margin-top:40px;">
+<button class="love-btn" id="openLetter">💌 Open Love Letter</button>
+</div>
 </section>
 
 <section class="timeline">
-  <div class="moment">✨ The Day Our Story Began</div>
-  <div class="moment">🌸 Every Smile Made It Deeper</div>
-  <div class="moment">💖 Love Became Our Language</div>
-</section>
-
-<section class="timeline">
-  <div class="loveletter" id="typewriter"></div>
+<div class="moment">✨ The Day Our Story Began</div>
+<div class="moment">🌸 Every Smile Made It Deeper</div>
+<div class="moment">💖 Love Became Our Language</div>
 </section>
 
 <section class="temple-section">
-  <div class="temple-aura"></div>
-  <h2>🛕 Blessed By The Divine</h2>
+<div class="temple-aura"></div>
+<h2>🛕 Blessed By The Divine</h2>
 </section>
 
-<svg id="flightSVG" viewBox="0 0 1000 200">
-  <path id="flightPath" d="M0,100 C300,0 700,200 1000,100" stroke="transparent" fill="none"/>
-  <circle id="heartFly" r="10" fill="red"/>
+<svg viewBox="0 0 1000 200" style="width:100%;height:200px;">
+<path id="flightPath" d="M0,100 C300,0 700,200 1000,100" stroke="transparent" fill="none"/>
+<circle id="heartFly" r="10" fill="red"/>
 </svg>
 
 <section class="couple">
-  ❤️ Forever Starts Here ❤️
+❤️ Forever Starts Here ❤️
 </section>
+
+<!-- LOVE LETTER MODAL -->
+<div id="letterModal">
+<div id="letterBox">
+<span class="close" id="closeLetter">✖</span>
+<div id="letterContent"></div>
+</div>
+</div>
 
 <script>
 gsap.registerPlugin(ScrollTrigger,MotionPathPlugin);
 
-/* Intro */
+/* Intro Animation */
 gsap.to(".title",{opacity:1,y:-20,duration:2});
 gsap.to(".subtitle",{opacity:1,delay:1,duration:2});
 
 /* Scroll Reveal */
 gsap.utils.toArray(".moment").forEach(el=>{
-  gsap.to(el,{
-    scrollTrigger:{trigger:el,start:"top 80%"},
-    opacity:1,y:0,duration:1.5
-  });
+gsap.to(el,{
+scrollTrigger:{trigger:el,start:"top 80%"},
+opacity:1,y:0,duration:1.5
+});
 });
 
 /* Parallax */
-gsap.to(".parallax-stars",{
-  y:200,
-  scrollTrigger:{
-    scrub:true
-  }
-});
+gsap.to(".parallax-stars",{y:200,scrollTrigger:{scrub:true}});
 
-/* Motion Path Heart */
+/* Heart Motion */
 gsap.to("#heartFly",{
-  duration:5,
-  repeat:-1,
-  ease:"none",
-  motionPath:{
-    path:"#flightPath",
-    align:"#flightPath",
-    autoRotate:true
-  }
+duration:5,
+repeat:-1,
+ease:"none",
+motionPath:{
+path:"#flightPath",
+align:"#flightPath",
+autoRotate:true
+}
 });
 
 /* Couple Reveal */
 gsap.to(".couple",{
-  scrollTrigger:{trigger:".couple",start:"top 80%"},
-  opacity:1,duration:2
+scrollTrigger:{trigger:".couple",start:"top 80%"},
+opacity:1,duration:2
 });
 
-/* Typewriter Effect */
-const text=`My Love,
+/* Typewriter Love Letter */
+const loveText=`பிரியாணி தேடி வந்த பயணத்தில்,
+பெரியதொரு தேவதையை கண்டேனே!
 
-You came into my life quietly,
-but changed it completely.
+"டாட்டூ" கேட்ட உன் ஒற்றை வினாவில்,
+என் மொத்த இதயத்தையும் தந்தேனே!
 
-You are my calm in chaos,
-my strength in weakness,
-my forever in this lifetime.
+இன்ஸ்டாகிராம் இரவுகளும், கல்லூரி இடைவெளியும்,
+நம் காதலை மெருகேற்றிய ரகசியங்கள்!
 
-With you,
-every moment feels eternal. ❤️`;
+தடைகள் பல வந்த போதும் தளராமல்,
+நாம் இணைந்தோம் "இன்பினிட்டி" பந்தத்தில்!
 
+வடாபழனி முருகன் சாட்சியாய் கைகோர்த்து,
+மலேசியா முதல் பாலி வரை தடம் பதித்து,
+
+சண்டைகள், கொஞ்சல்கள், செல்லக் கோபங்களுடன்,
+நம் காதல் பயணம் தொடருமே... காலங்கள் கடந்தும்! ❤️`;
+
+const modal=document.getElementById("letterModal");
+const openBtn=document.getElementById("openLetter");
+const closeBtn=document.getElementById("closeLetter");
+const content=document.getElementById("letterContent");
+
+openBtn.onclick=()=>{
+modal.style.display="flex";
+content.innerHTML="";
 let i=0;
 function typeWriter(){
-  if(i<text.length){
-    document.getElementById("typewriter").innerHTML+=text.charAt(i);
-    i++;
-    setTimeout(typeWriter,40);
-  }
+if(i<loveText.length){
+content.innerHTML+=loveText.charAt(i);
+i++;
+setTimeout(typeWriter,35);
+}
 }
 typeWriter();
+};
+
+closeBtn.onclick=()=>modal.style.display="none";
 
 /* Particles */
 const canvas=document.getElementById("particles");
@@ -234,35 +288,31 @@ canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
 let particles=[];
 for(let i=0;i<80;i++){
-  particles.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    r:Math.random()*2+1,
-    d:Math.random()*1
-  });
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2+1,
+d:Math.random()*1
+});
 }
 function draw(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="rgba(255,255,255,0.6)";
-  particles.forEach(p=>{
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fill();
-    p.y+=p.d;
-    if(p.y>canvas.height)p.y=0;
-  });
-  requestAnimationFrame(draw);
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(255,255,255,0.6)";
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+p.y+=p.d;
+if(p.y>canvas.height)p.y=0;
+});
+requestAnimationFrame(draw);
 }
 draw();
 
-/* Music Autoplay Attempt */
+/* Music */
 const music=document.getElementById("bgMusic");
-function playMusic(){
-  music.play();
-}
-window.addEventListener("load",()=>{
-  music.play().catch(()=>{});
-});
+function playMusic(){music.play();}
+window.addEventListener("load",()=>{music.play().catch(()=>{});});
 </script>
 
 </body>
