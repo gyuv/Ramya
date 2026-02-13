@@ -19,7 +19,6 @@ font-family: 'Poppins', sans-serif;
 overflow-x: hidden;
 }
 
-/* Cinematic Background */
 .bg {
 position: fixed;
 width: 100%;
@@ -46,7 +45,6 @@ padding: 100px 20px;
 text-align: center;
 }
 
-/* Premium Gold Shimmer Effect */
 .gold-text {
 background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #bf953f);
 -webkit-background-clip: text;
@@ -76,7 +74,6 @@ font-family: 'Playfair Display', serif;
 font-size: 2.8rem;
 margin-bottom: 30px;
 color: #fcf6ba;
-text-shadow: 0 0 20px rgba(191, 149, 63, 0.2);
 }
 
 p {
@@ -84,7 +81,6 @@ max-width: 850px;
 font-size: 1.15rem;
 line-height: 2.2;
 opacity: 0.85;
-letter-spacing: 0.5px;
 }
 
 /* Image Cluster - Original Size Display */
@@ -98,8 +94,8 @@ width: 100%;
 }
 
 .image-cluster img {
-max-width: 90%; /* Ensures images don't overflow small screens */
-height: auto; /* Displays original proportions */
+max-width: 90%; 
+height: auto; 
 border-radius: 15px;
 box-shadow: 0 20px 50px rgba(0,0,0,0.8);
 transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
@@ -110,7 +106,6 @@ transform: scale(1.03);
 z-index: 10;
 }
 
-/* Animations Hidden State */
 .intro-content {
 opacity: 0;
 transform: translateY(30px);
@@ -121,7 +116,6 @@ opacity: 0;
 transform: translateY(80px);
 }
 
-/* Canvas Background */
 canvas {
 position: fixed;
 top: 0;
@@ -143,7 +137,7 @@ display: none;
 <canvas id="heartCanvas"></canvas>
 
 <audio id="bgMusic" loop>
-<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8f49b4f42e.mp3" type="audio/mpeg">
+<source src="audio/background_music.mp3" type="audio/mpeg">
 </audio>
 
 <section id="intro">
@@ -159,10 +153,8 @@ And ended with me losing my heart and peace to you forever.
 <section class="fade-section">
 <h2>The Flavor of First Sight</h2>
 <p>
-I walked into that wedding with only one mission: the food counter.<br>
-But amidst the steam of the biriyani and the chaos of the guests,<br>
-my eyes caught yours. The aroma faded, the noise died down,<br>
-and suddenly, the food didn't seem like the best thing in the room anymore.
+I walked into that wedding for the food counter.<br>
+But amidst the steam of the biriyani, my eyes caught yours.
 </p>
 <div class="image-cluster">
 <img src="images/biriyani_1.jpg">
@@ -174,10 +166,8 @@ and suddenly, the food didn't seem like the best thing in the room anymore.
 <section class="fade-section">
 <h2>A Spark in a Question</h2>
 <p>
-“Where did you get your tattoo?”<br><br>
-It was such a simple opening, but the way you looked at me changed the air.<br>
-In that moment, 'Infinity' stopped being just a design on skin—<br>
-it became the duration I wanted to spend by your side.
+“Where did you get your tattoo?”<br>
+One simple question, one confident smile. Infinity began there.
 </p>
 <div class="image-cluster">
 <img src="images/tattoo_1.jpg">
@@ -189,8 +179,7 @@ it became the duration I wanted to spend by your side.
 <section class="fade-section">
 <h2>Digital Echoes & 3 AM Hearts</h2>
 <p>
-What started as casual story replies turned into paragraphs of thoughts.<br>
-“Going to sleep now” usually meant another two hours of talking.<br>
+Casual story replies turned into paragraphs. <br>
 The blue glow of Instagram became our little sanctuary.
 </p>
 <div class="image-cluster">
@@ -203,9 +192,8 @@ The blue glow of Instagram became our little sanctuary.
 <section class="fade-section">
 <h2>The Beauty of Stolen Seconds</h2>
 <p>
-College wasn’t about the lectures; it was about the 'side gaps.'<br>
-Those hidden corners where we shared quick glances and heavy silences.<br>
-Accidental hand touches that were entirely on purpose.
+College side-gaps and hidden corners.<br>
+Hand touches that weren't accidental at all.
 </p>
 <div class="image-cluster">
 <img src="images/college_1.jpg">
@@ -217,11 +205,8 @@ Accidental hand touches that were entirely on purpose.
 <section class="fade-section">
 <h2 class="gold-text">When Time Stood Still</h2>
 <p>
-There was a time when the world tried to build walls between us.<br>
-<strong>No texts. No calls. Just an agonizing silence.</strong><br><br>
-But love finds a way. Random neighbors became our messengers,<br>
-friends played allies, and I even had to <strong>hijack Grandmother’s phone</strong><br>
-just to hear your voice for a few precious seconds.
+No texts. No calls. Just neighbors as messengers.<br>
+The mission of hijacking grandmother’s phone just to hear your voice.
 </p>
 <div class="image-cluster">
 <img src="images/storm_1.jpg">
@@ -233,9 +218,8 @@ just to hear your voice for a few precious seconds.
 <section class="fade-section">
 <h2>29 August 2026 — The Vow</h2>
 <p>
-7:00 AM. The air was cool and the temple bells were rhythmic.<br>
-Under the sacred witness of the morning light, the struggle ended.<br>
-When I tied that knot, you didn't just hold my hand—<strong>You became my forever.</strong>
+7:00 AM. Temple bells and sacred promises.<br>
+That day, you became my forever.
 </p>
 <div class="image-cluster">
 <img src="images/wedding_1.jpg">
@@ -247,9 +231,8 @@ When I tied that knot, you didn't just hold my hand—<strong>You became my fore
 <section class="fade-section">
 <h2>Across Borders, Hand in Hand</h2>
 <p>
-From the vibrant streets of Malaysia to the golden sunsets of Bali.<br>
-Waking up in a foreign land and seeing your face next to mine<br>
-reminded me that 'home' is a person, not a place.
+Malaysia to Bali. Waking up in a foreign land,<br>
+realizing home is wherever you are.
 </p>
 <div class="image-cluster">
 <img src="images/honeymoon_1.jpg">
@@ -261,9 +244,8 @@ reminded me that 'home' is a person, not a place.
 <section class="fade-section">
 <h2>The Chaos We Call Home</h2>
 <p>
-Your random mood swings, your adorable jealousy, and that stubborn streak.<br>
-Our endless gossip, our shared silence, and the way we understand each other.<br>
-That’s not drama—that’s the real magic of us.
+Mood swings, jealousy, and stubbornness.<br>
+Inside jokes and silent understanding. This is real magic.
 </p>
 <div class="image-cluster">
 <img src="images/everyday_1.jpg">
@@ -275,8 +257,7 @@ That’s not drama—that’s the real magic of us.
 <section class="fade-section">
 <h2 class="gold-text">To Infinity & Beyond</h2>
 <p>
-This isn't the end of the story; it's just the prologue.<br>
-From strangers chasing biriyani to soulmates chasing the horizon.<br><br>
+This is just the prologue.<br>
 <strong>I love you, Ramya. Always.</strong>
 </p>
 <div class="image-cluster">
@@ -289,65 +270,27 @@ From strangers chasing biriyani to soulmates chasing the horizon.<br><br>
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* Intro Reveal */
 window.addEventListener('load', () => {
 const tl = gsap.timeline();
-tl.to(".intro-content", {
-opacity: 1,
-y: 0,
-duration: 2.5,
-ease: "power4.out"
-});
-tl.from(".gold-text", {
-backgroundPosition: "200% center",
-duration: 2,
-ease: "power2.inOut"
-}, "-=1.5");
+tl.to(".intro-content", { opacity: 1, y: 0, duration: 2.5, ease: "power4.out" });
+tl.from(".gold-text", { backgroundPosition: "200% center", duration: 2, ease: "power2.inOut" }, "-=1.5");
 });
 
-/* Scroll Fade Animations */
 gsap.utils.toArray(".fade-section").forEach(sec => {
 gsap.to(sec, {
-scrollTrigger: {
-trigger: sec,
-start: "top 85%",
-toggleActions: "play none none none"
-},
-opacity: 1,
-y: 0,
-duration: 1.8,
-ease: "power3.out"
+scrollTrigger: { trigger: sec, start: "top 85%", toggleActions: "play none none none" },
+opacity: 1, y: 0, duration: 1.8, ease: "power3.out"
 });
 });
 
-/* Depth Zoom */
-gsap.to("#depthLayer", {
-scale: 1.3,
-scrollTrigger: {
-trigger: "body",
-start: "top top",
-end: "bottom bottom",
-scrub: 1.5
-}
-});
-
-/* Floating Hearts */
 const canvas = document.getElementById("heartCanvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 let hearts = [];
 for(let i=0; i<45; i++){
-hearts.push({
-x: Math.random() * canvas.width,
-y: Math.random() * canvas.height,
-size: Math.random() * 12 + 6,
-speed: Math.random() * 0.4 + 0.2,
-opacity: Math.random() * 0.5 + 0.2
-});
+hearts.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 12 + 6, speed: Math.random() * 0.4 + 0.2, opacity: Math.random() * 0.5 + 0.2 });
 }
-
 function drawHeart(x, y, size, opacity) {
 ctx.beginPath();
 ctx.moveTo(x, y);
@@ -356,7 +299,6 @@ ctx.bezierCurveTo(x + size, y + size/3, x + size/2, y - size/2, x, y);
 ctx.fillStyle = `rgba(255, 120, 160, ${opacity})`;
 ctx.fill();
 }
-
 function animate() {
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 hearts.forEach(h => {
@@ -368,7 +310,6 @@ requestAnimationFrame(animate);
 }
 animate();
 
-/* Interaction to start Audio */
 window.addEventListener('click', () => {
 const audio = document.getElementById('bgMusic');
 if(audio.paused) audio.play();
