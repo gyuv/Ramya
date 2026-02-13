@@ -85,17 +85,30 @@ opacity:0.85;
 letter-spacing: 0.5px;
 }
 
-.memory-photo{
-margin-top:50px;
-max-width:800px;
-width:90%;
-border-radius:20px;
-box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 20px rgba(191,149,63,0.1);
-transition:transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+/* Image Cluster Styles */
+.image-cluster {
+margin-top: 60px;
+display: flex;
+flex-wrap: wrap; /* Allows images to wrap on smaller screens */
+justify-content: center;
+gap: 20px; /* Space between images */
+max-width: 900px; /* Max width for the cluster */
+width: 95%;
 }
 
-.memory-photo:hover{
-transform:scale(1.02);
+.image-cluster img {
+width: clamp(200px, 28vw, 280px); /* Responsive image width */
+height: clamp(150px, 20vw, 200px); /* Maintain aspect ratio */
+object-fit: cover; /* Ensures images fill their space */
+border-radius: 15px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 15px rgba(191,149,63,0.1);
+transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.6s ease;
+}
+
+.image-cluster img:hover {
+transform: translateY(-10px) scale(1.05); /* Lift and slightly enlarge on hover */
+box-shadow: 0 25px 70px rgba(0,0,0,0.9), 0 0 30px rgba(255,215,0,0.3);
+z-index: 10; /* Bring hovered image to front */
 }
 
 .intro-content {
@@ -151,7 +164,11 @@ But amidst the steam of the biriyani and the chaos of the guests,<br>
 my eyes caught yours. The aroma faded, the noise died down,<br>
 and suddenly, the biriyani didn't seem like the best thing in the room anymore.
 </p>
-<img src="images/biriyani.jpg" class="memory-photo">
+<div class="image-cluster">
+<img src="images/biriyani_1.jpg" alt="A plate of biriyani" >
+<img src="images/wedding_crowd.jpg" alt="Blurry wedding crowd" >
+<img src="images/first_glance.jpg" alt="Couple making eye contact" >
+</div>
 </section>
 
 <section class="fade-section">
@@ -163,7 +180,11 @@ Your confidence was magnetic; your smile was a trap I happily fell into.<br>
 In that moment, 'Infinity' stopped being just a design on skin—<br>
 it became the duration I wanted to spend by your side.
 </p>
-<img src="images/tattoo.jpg" class="memory-photo">
+<div class="image-cluster">
+<img src="images/tattoo_arm.jpg" alt="Close-up of a tattoo" >
+<img src="images/confident_smile.jpg" alt="Smiling face" >
+<img src="images/infinity_symbol.jpg" alt="Artistic infinity symbol" >
+</div>
 </section>
 
 <section class="fade-section">
@@ -175,7 +196,11 @@ What started as casual story replies turned into paragraphs of thoughts.<br><br>
 I found myself checking my phone every minute, addicted to the way<br>
 you understood the parts of me I never even mentioned.
 </p>
-<img src="images/instagram.jpg" class="memory-photo">
+<div class="image-cluster">
+<img src="images/phone_chat_night.jpg" alt="Phone screen at night with chat messages" >
+<img src="images/couple_texting.jpg" alt="Couple texting each other" >
+<img src="images/instagram_feed.jpg" alt="Instagram story interface" >
+</div>
 </section>
 
 <section class="fade-section">
@@ -187,7 +212,11 @@ The world saw two people walking past each other,<br>
 but we felt the electricity of accidental hand touches that were entirely on purpose.<br>
 Those small, stolen moments built the foundation of our forever.
 </p>
-<img src="images/college.jpg" class="memory-photo">
+<div class="image-cluster">
+<img src="images/college_hallway.jpg" alt="College hallway, blurred background" >
+<img src="images/hand_touch_brief.jpg" alt="Hands brushing accidentally" >
+<img src="images/secret_glance_couple.jpg" alt="Couple exchanging a secret glance" >
+</div>
 </section>
 
 <section class="fade-section">
@@ -200,7 +229,11 @@ friends who played messengers, and that legendary night where I had to<br>
 <strong>hijack Grandmother’s phone</strong> just to hear your breath on the other side.<br><br>
 We proved that no wall is high enough when two hearts refuse to let go.
 </p>
-<img src="images/storm.jpg" class="memory-photo">
+<div class="image-cluster">
+<img src="images/storm_clouds.jpg" alt="Dark, stormy clouds" >
+<img src="images/secret_phone_call.jpg" alt="Hand holding old phone in secret" >
+<img src="images/old_lady_phone.jpg" alt="Grandmother looking confused at her phone" >
+</div>
 </section>
 
 <section class="fade-section">
@@ -211,7 +244,11 @@ Under the sacred witness of the morning light, the struggle ended and our life b
 When I tied that knot, it wasn't just a tradition—it was a promise<br>
 that I would protect your peace as fiercely as you protected our love.
 </p>
-<img src="images/wedding.jpg" class="memory-photo">
+<div class="image-cluster">
+<img src="images/temple_bells.jpg" alt="Traditional temple bells" >
+<img src="images/wedding_knot.jpg" alt="Hands tying a wedding knot" >
+<img src="images/sunrise_couple_temple.jpg" alt="Couple at temple during sunrise" >
+</div>
 </section>
 
 <section class="fade-section">
@@ -222,7 +259,11 @@ Exploring the world with you felt like seeing colors for the first time.<br><br>
 Waking up in a foreign land and seeing your face next to mine<br>
 reminded me that 'home' isn't a place with an address—it's you.
 </p>
-<img src="images/honeymoon.jpg" class="memory-photo">
+<div class="image-cluster">
+<img src="images/malaysia_street.jpg" alt="Kuala Lumpur street scene" >
+<img src="images/bali_sunset.jpg" alt="Couple watching Bali sunset" >
+<img src="images/holding_hands_travel.jpg" alt="Couple holding hands while traveling" >
+</div>
 </section>
 
 <section class="fade-section">
@@ -234,7 +275,11 @@ that I’ve secretly grown to love. <br><br>
 Our endless gossip, our shared silence, and the way you know exactly<br>
 what I’m thinking without me saying a word. That’s the real magic.
 </p>
-<img src="images/everyday.jpg" class="memory-photo">
+<div class="image-cluster">
+<img src="images/couple_arguing_playful.jpg" alt="Couple playfully arguing" >
+<img src="images/couple_laughing.jpg" alt="Couple laughing together" >
+<img src="images/couple_comfort_silence.jpg" alt="Couple in comfortable silence" >
+</div>
 </section>
 
 <section class="fade-section">
@@ -246,6 +291,11 @@ We started as strangers chasing biriyani,<br>
 and now we are soulmates chasing the horizon.<br><br>
 <strong>I love you, Ramya. Always.</strong>
 </p>
+<div class="image-cluster">
+<img src="images/future_travel.jpg" alt="Couple looking at a world map" >
+<img src="images/old_couple_hands.jpg" alt="Elderly couple holding hands" >
+<img src="images/infinity_horizon.jpg" alt="Couple silhouetted against a sunset, infinite horizon" >
+</div>
 </section>
 
 <script>
