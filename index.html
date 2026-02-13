@@ -11,40 +11,42 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
 
 <style>
-body{
-margin:0;
-background:#050816;
-color:white;
-font-family:'Poppins',sans-serif;
-overflow-x:hidden;
+body {
+margin: 0;
+background: #050816;
+color: white;
+font-family: 'Poppins', sans-serif;
+overflow-x: hidden;
 }
 
-.bg{
-position:fixed;
-width:100%;
-height:100vh;
-background:radial-gradient(circle at 50% 30%,#162447,#050816 70%);
-z-index:-3;
+/* Cinematic Background */
+.bg {
+position: fixed;
+width: 100%;
+height: 100vh;
+background: radial-gradient(circle at 50% 30%, #162447, #050816 70%);
+z-index: -3;
 }
 
-.depth{
-position:fixed;
-width:120%;
-height:120%;
-background:radial-gradient(circle,rgba(255,215,0,0.08),transparent 60%);
-z-index:-2;
+.depth {
+position: fixed;
+width: 120%;
+height: 120%;
+background: radial-gradient(circle, rgba(255, 215, 0, 0.08), transparent 60%);
+z-index: -2;
 }
 
-section{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:100px 20px;
-text-align:center;
+section {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 100px 20px;
+text-align: center;
 }
 
+/* Premium Gold Shimmer Effect */
 .gold-text {
 background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #bf953f);
 -webkit-background-clip: text;
@@ -62,75 +64,74 @@ to { background-position: 200% center; }
 text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 
-h1{
-font-family:'Playfair Display',serif;
-font-size:clamp(2.5rem, 8vw, 4.5rem);
-margin-bottom:20px;
+h1 {
+font-family: 'Playfair Display', serif;
+font-size: clamp(2.5rem, 8vw, 4.5rem);
+margin-bottom: 20px;
 letter-spacing: 2px;
 }
 
-h2{
-font-family:'Playfair Display',serif;
-font-size:2.8rem;
-margin-bottom:30px;
+h2 {
+font-family: 'Playfair Display', serif;
+font-size: 2.8rem;
+margin-bottom: 30px;
 color: #fcf6ba;
 text-shadow: 0 0 20px rgba(191, 149, 63, 0.2);
 }
 
-p{
-max-width:850px;
-font-size:1.15rem;
-line-height:2.2;
-opacity:0.85;
+p {
+max-width: 850px;
+font-size: 1.15rem;
+line-height: 2.2;
+opacity: 0.85;
 letter-spacing: 0.5px;
 }
 
-/* Image Cluster Styles */
+/* Image Cluster - Original Size Display */
 .image-cluster {
 margin-top: 60px;
 display: flex;
-flex-wrap: wrap; /* Allows images to wrap on smaller screens */
+flex-wrap: wrap;
 justify-content: center;
-gap: 20px; /* Space between images */
-max-width: 900px; /* Max width for the cluster */
-width: 95%;
+gap: 30px;
+width: 100%;
 }
 
 .image-cluster img {
-width: clamp(200px, 28vw, 280px); /* Responsive image width */
-height: clamp(150px, 20vw, 200px); /* Maintain aspect ratio */
-object-fit: cover; /* Ensures images fill their space */
+max-width: 90%; /* Ensures images don't overflow small screens */
+height: auto; /* Displays original proportions */
 border-radius: 15px;
-box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 15px rgba(191,149,63,0.1);
-transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.6s ease;
+box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .image-cluster img:hover {
-transform: translateY(-10px) scale(1.05); /* Lift and slightly enlarge on hover */
-box-shadow: 0 25px 70px rgba(0,0,0,0.9), 0 0 30px rgba(255,215,0,0.3);
-z-index: 10; /* Bring hovered image to front */
+transform: scale(1.03);
+z-index: 10;
 }
 
+/* Animations Hidden State */
 .intro-content {
 opacity: 0;
 transform: translateY(30px);
 }
 
-.fade-section{
-opacity:0;
-transform:translateY(80px);
+.fade-section {
+opacity: 0;
+transform: translateY(80px);
 }
 
-canvas{
-position:fixed;
-top:0;
-left:0;
-pointer-events:none;
-z-index:-1;
+/* Canvas Background */
+canvas {
+position: fixed;
+top: 0;
+left: 0;
+pointer-events: none;
+z-index: -1;
 }
 
-audio{
-display:none;
+audio {
+display: none;
 }
 </style>
 </head>
@@ -158,16 +159,15 @@ And ended with me losing my heart and peace to you forever.
 <section class="fade-section">
 <h2>The Flavor of First Sight</h2>
 <p>
-They say love happens in mysterious ways, but for us, it was seasoned with spices.<br>
-I walked into that wedding with only one mission: the food counter.<br><br>
+I walked into that wedding with only one mission: the food counter.<br>
 But amidst the steam of the biriyani and the chaos of the guests,<br>
 my eyes caught yours. The aroma faded, the noise died down,<br>
-and suddenly, the biriyani didn't seem like the best thing in the room anymore.
+and suddenly, the food didn't seem like the best thing in the room anymore.
 </p>
 <div class="image-cluster">
-<img src="images/biriyani_1.jpg" alt="A plate of biriyani" >
-<img src="images/wedding_crowd.jpg" alt="Blurry wedding crowd" >
-<img src="images/first_glance.jpg" alt="Couple making eye contact" >
+<img src="images/biriyani_1.jpg">
+<img src="images/biriyani_2.jpg">
+<img src="images/biriyani_3.jpg">
 </div>
 </section>
 
@@ -176,30 +176,27 @@ and suddenly, the biriyani didn't seem like the best thing in the room anymore.
 <p>
 “Where did you get your tattoo?”<br><br>
 It was such a simple opening, but the way you looked at me changed the air.<br>
-Your confidence was magnetic; your smile was a trap I happily fell into.<br>
 In that moment, 'Infinity' stopped being just a design on skin—<br>
 it became the duration I wanted to spend by your side.
 </p>
 <div class="image-cluster">
-<img src="images/tattoo_arm.jpg" alt="Close-up of a tattoo" >
-<img src="images/confident_smile.jpg" alt="Smiling face" >
-<img src="images/infinity_symbol.jpg" alt="Artistic infinity symbol" >
+<img src="images/tattoo_1.jpg">
+<img src="images/tattoo_2.jpg">
+<img src="images/tattoo_3.jpg">
 </div>
 </section>
 
 <section class="fade-section">
 <h2>Digital Echoes & 3 AM Hearts</h2>
 <p>
-The blue glow of Instagram became our little sanctuary.<br>
-What started as casual story replies turned into paragraphs of thoughts.<br><br>
+What started as casual story replies turned into paragraphs of thoughts.<br>
 “Going to sleep now” usually meant another two hours of talking.<br>
-I found myself checking my phone every minute, addicted to the way<br>
-you understood the parts of me I never even mentioned.
+The blue glow of Instagram became our little sanctuary.
 </p>
 <div class="image-cluster">
-<img src="images/phone_chat_night.jpg" alt="Phone screen at night with chat messages" >
-<img src="images/couple_texting.jpg" alt="Couple texting each other" >
-<img src="images/instagram_feed.jpg" alt="Instagram story interface" >
+<img src="images/instagram_1.jpg">
+<img src="images/instagram_2.jpg">
+<img src="images/instagram_3.jpg">
 </div>
 </section>
 
@@ -207,47 +204,43 @@ you understood the parts of me I never even mentioned.
 <h2>The Beauty of Stolen Seconds</h2>
 <p>
 College wasn’t about the lectures; it was about the 'side gaps.'<br>
-Those hidden corners where we shared quick glances and heavy silences.<br><br>
-The world saw two people walking past each other,<br>
-but we felt the electricity of accidental hand touches that were entirely on purpose.<br>
-Those small, stolen moments built the foundation of our forever.
+Those hidden corners where we shared quick glances and heavy silences.<br>
+Accidental hand touches that were entirely on purpose.
 </p>
 <div class="image-cluster">
-<img src="images/college_hallway.jpg" alt="College hallway, blurred background" >
-<img src="images/hand_touch_brief.jpg" alt="Hands brushing accidentally" >
-<img src="images/secret_glance_couple.jpg" alt="Couple exchanging a secret glance" >
+<img src="images/college_1.jpg">
+<img src="images/college_2.jpg">
+<img src="images/college_3.jpg">
 </div>
 </section>
 
 <section class="fade-section">
 <h2 class="gold-text">When Time Stood Still</h2>
 <p>
-Then came the storm. The world tried to silence us.<br>
-<strong>No texts. No calls. No way to reach you.</strong><br><br>
-But they underestimated our stubbornness. We had neighbors who became allies,<br>
-friends who played messengers, and that legendary night where I had to<br>
-<strong>hijack Grandmother’s phone</strong> just to hear your breath on the other side.<br><br>
-We proved that no wall is high enough when two hearts refuse to let go.
+There was a time when the world tried to build walls between us.<br>
+<strong>No texts. No calls. Just an agonizing silence.</strong><br><br>
+But love finds a way. Random neighbors became our messengers,<br>
+friends played allies, and I even had to <strong>hijack Grandmother’s phone</strong><br>
+just to hear your voice for a few precious seconds.
 </p>
 <div class="image-cluster">
-<img src="images/storm_clouds.jpg" alt="Dark, stormy clouds" >
-<img src="images/secret_phone_call.jpg" alt="Hand holding old phone in secret" >
-<img src="images/old_lady_phone.jpg" alt="Grandmother looking confused at her phone" >
+<img src="images/storm_1.jpg">
+<img src="images/storm_2.jpg">
+<img src="images/storm_3.jpg">
 </div>
 </section>
 
 <section class="fade-section">
 <h2>29 August 2026 — The Vow</h2>
 <p>
-7:00 AM. The air was cool, the temple bells were rhythmic, and my heart was racing.<br><br>
-Under the sacred witness of the morning light, the struggle ended and our life began.<br>
-When I tied that knot, it wasn't just a tradition—it was a promise<br>
-that I would protect your peace as fiercely as you protected our love.
+7:00 AM. The air was cool and the temple bells were rhythmic.<br>
+Under the sacred witness of the morning light, the struggle ended.<br>
+When I tied that knot, you didn't just hold my hand—<strong>You became my forever.</strong>
 </p>
 <div class="image-cluster">
-<img src="images/temple_bells.jpg" alt="Traditional temple bells" >
-<img src="images/wedding_knot.jpg" alt="Hands tying a wedding knot" >
-<img src="images/sunrise_couple_temple.jpg" alt="Couple at temple during sunrise" >
+<img src="images/wedding_1.jpg">
+<img src="images/wedding_2.jpg">
+<img src="images/wedding_3.jpg">
 </div>
 </section>
 
@@ -255,30 +248,27 @@ that I would protect your peace as fiercely as you protected our love.
 <h2>Across Borders, Hand in Hand</h2>
 <p>
 From the vibrant streets of Malaysia to the golden sunsets of Bali.<br>
-Exploring the world with you felt like seeing colors for the first time.<br><br>
 Waking up in a foreign land and seeing your face next to mine<br>
-reminded me that 'home' isn't a place with an address—it's you.
+reminded me that 'home' is a person, not a place.
 </p>
 <div class="image-cluster">
-<img src="images/malaysia_street.jpg" alt="Kuala Lumpur street scene" >
-<img src="images/bali_sunset.jpg" alt="Couple watching Bali sunset" >
-<img src="images/holding_hands_travel.jpg" alt="Couple holding hands while traveling" >
+<img src="images/honeymoon_1.jpg">
+<img src="images/honeymoon_2.jpg">
+<img src="images/honeymoon_3.jpg">
 </div>
 </section>
 
 <section class="fade-section">
 <h2>The Chaos We Call Home</h2>
 <p>
-It’s not just the grand moments; it’s the beautiful mess in between.<br>
-Your random mood swings, your adorable jealousy, and that stubborn streak<br>
-that I’ve secretly grown to love. <br><br>
-Our endless gossip, our shared silence, and the way you know exactly<br>
-what I’m thinking without me saying a word. That’s the real magic.
+Your random mood swings, your adorable jealousy, and that stubborn streak.<br>
+Our endless gossip, our shared silence, and the way we understand each other.<br>
+That’s not drama—that’s the real magic of us.
 </p>
 <div class="image-cluster">
-<img src="images/couple_arguing_playful.jpg" alt="Couple playfully arguing" >
-<img src="images/couple_laughing.jpg" alt="Couple laughing together" >
-<img src="images/couple_comfort_silence.jpg" alt="Couple in comfortable silence" >
+<img src="images/everyday_1.jpg">
+<img src="images/everyday_2.jpg">
+<img src="images/everyday_3.jpg">
 </div>
 </section>
 
@@ -286,15 +276,13 @@ what I’m thinking without me saying a word. That’s the real magic.
 <h2 class="gold-text">To Infinity & Beyond</h2>
 <p>
 This isn't the end of the story; it's just the prologue.<br>
-To more flights, more fights, more midnight snacks, and a million more memories.<br><br>
-We started as strangers chasing biriyani,<br>
-and now we are soulmates chasing the horizon.<br><br>
+From strangers chasing biriyani to soulmates chasing the horizon.<br><br>
 <strong>I love you, Ramya. Always.</strong>
 </p>
 <div class="image-cluster">
-<img src="images/future_travel.jpg" alt="Couple looking at a world map" >
-<img src="images/old_couple_hands.jpg" alt="Elderly couple holding hands" >
-<img src="images/infinity_horizon.jpg" alt="Couple silhouetted against a sunset, infinite horizon" >
+<img src="images/future_1.jpg">
+<img src="images/future_2.jpg">
+<img src="images/future_3.jpg">
 </div>
 </section>
 
@@ -317,7 +305,7 @@ ease: "power2.inOut"
 }, "-=1.5");
 });
 
-/* Scroll Animations */
+/* Scroll Fade Animations */
 gsap.utils.toArray(".fade-section").forEach(sec => {
 gsap.to(sec, {
 scrollTrigger: {
@@ -332,7 +320,7 @@ ease: "power3.out"
 });
 });
 
-/* Zoom Depth effect */
+/* Depth Zoom */
 gsap.to("#depthLayer", {
 scale: 1.3,
 scrollTrigger: {
@@ -343,7 +331,7 @@ scrub: 1.5
 }
 });
 
-/* Hearts */
+/* Floating Hearts */
 const canvas = document.getElementById("heartCanvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
@@ -380,7 +368,7 @@ requestAnimationFrame(animate);
 }
 animate();
 
-/* Music Trigger */
+/* Interaction to start Audio */
 window.addEventListener('click', () => {
 const audio = document.getElementById('bgMusic');
 if(audio.paused) audio.play();
