@@ -19,7 +19,6 @@ font-family:'Poppins',sans-serif;
 overflow-x:hidden;
 }
 
-/* Cinematic Background */
 .bg{
 position:fixed;
 width:100%;
@@ -28,7 +27,6 @@ background:radial-gradient(circle at 50% 30%,#162447,#050816 70%);
 z-index:-3;
 }
 
-/* Slow Depth Zoom */
 .depth{
 position:fixed;
 width:120%;
@@ -37,57 +35,79 @@ background:radial-gradient(circle,rgba(255,215,0,0.08),transparent 60%);
 z-index:-2;
 }
 
-/* Sections */
 section{
 min-height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-padding:80px 20px;
+padding:100px 20px;
 text-align:center;
-opacity:1;
+}
+
+.gold-text {
+background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #bf953f);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-size: 200% auto;
+animation: shimmer 4s linear infinite;
+filter: drop-shadow(0 0 10px rgba(191, 149, 63, 0.3));
+}
+
+@keyframes shimmer {
+to { background-position: 200% center; }
+}
+
+.glow-soft {
+text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 
 h1{
 font-family:'Playfair Display',serif;
-font-size:3.8rem;
+font-size:clamp(2.5rem, 8vw, 4.5rem);
 margin-bottom:20px;
+letter-spacing: 2px;
 }
 
 h2{
 font-family:'Playfair Display',serif;
-font-size:2.4rem;
+font-size:2.8rem;
 margin-bottom:30px;
+color: #fcf6ba;
+text-shadow: 0 0 20px rgba(191, 149, 63, 0.2);
 }
 
 p{
 max-width:850px;
-font-size:1.2rem;
-line-height:2;
-opacity:0.9;
+font-size:1.15rem;
+line-height:2.2;
+opacity:0.85;
+letter-spacing: 0.5px;
 }
 
-/* Photo Frame */
 .memory-photo{
-margin-top:40px;
+margin-top:50px;
 max-width:800px;
 width:90%;
 border-radius:20px;
-box-shadow:0 20px 60px rgba(0,0,0,0.6);
-transition:transform 0.6s ease;
-}
-.memory-photo:hover{
-transform:scale(1.03);
+box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 20px rgba(191,149,63,0.1);
+transition:transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-/* Fade Sections */
+.memory-photo:hover{
+transform:scale(1.02);
+}
+
+.intro-content {
+opacity: 0;
+transform: translateY(30px);
+}
+
 .fade-section{
 opacity:0;
 transform:translateY(80px);
 }
 
-/* Heart Shower */
 canvas{
 position:fixed;
 top:0;
@@ -96,7 +116,6 @@ pointer-events:none;
 z-index:-1;
 }
 
-/* Music */
 audio{
 display:none;
 }
@@ -109,218 +128,213 @@ display:none;
 <div class="depth" id="depthLayer"></div>
 <canvas id="heartCanvas"></canvas>
 
-<audio autoplay loop>
+<audio id="bgMusic" loop>
 <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8f49b4f42e.mp3" type="audio/mpeg">
 </audio>
 
-<!-- INTRO -->
-<section>
-<h1>Yuvaraj ❤️ Ramya</h1>
-<p>
-In Search of Biriyani....
-  I Just Lost My Heart & Peace to you my love....
+<section id="intro">
+<div class="intro-content">
+<h1 class="gold-text">Yuvaraj ❤️ Ramya</h1>
+<p class="glow-soft">
+A journey that began with a plate of biriyani...<br>
+And ended with me losing my heart and peace to you forever.
 </p>
+</div>
 </section>
 
-<!-- BIRIYANI MOMENT -->
 <section class="fade-section">
-<h2>It Started With Biriyani</h2>
+<h2>The Flavor of First Sight</h2>
 <p>
-I didn’t attend that wedding looking for love.  
-I came for the food.
-
-But somewhere between the aroma of celebration  
-and the noise of the crowd —  
-I saw you.
-
-And suddenly, everything else blurred.
+They say love happens in mysterious ways, but for us, it was seasoned with spices.<br>
+I walked into that wedding with only one mission: the food counter.<br><br>
+But amidst the steam of the biriyani and the chaos of the guests,<br>
+my eyes caught yours. The aroma faded, the noise died down,<br>
+and suddenly, the biriyani didn't seem like the best thing in the room anymore.
 </p>
-
 <img src="images/biriyani.jpg" class="memory-photo">
 </section>
 
-<!-- TATTOO MOMENT -->
 <section class="fade-section">
-<h2>The Question That Changed Everything</h2>
+<h2>A Spark in a Question</h2>
 <p>
-“Where did you get your tattoo?”
-
-One simple question.  
-One confident smile.  
-And my heart made a decision without informing me.
-
-Infinity wasn’t just an idea anymore.
+“Where did you get your tattoo?”<br><br>
+It was such a simple opening, but the way you looked at me changed the air.<br>
+Your confidence was magnetic; your smile was a trap I happily fell into.<br>
+In that moment, 'Infinity' stopped being just a design on skin—<br>
+it became the duration I wanted to spend by your side.
 </p>
-
 <img src="images/tattoo.jpg" class="memory-photo">
 </section>
 
-<!-- INSTAGRAM PHASE -->
 <section class="fade-section">
-<h2>Late Night Conversations</h2>
+<h2>Digital Echoes & 3 AM Hearts</h2>
 <p>
-It started with replies.  
-Then longer chats.  
-Then faster responses.
-
-“Just five minutes” became two hours.  
-And slowly… you became my comfort.
+The blue glow of Instagram became our little sanctuary.<br>
+What started as casual story replies turned into paragraphs of thoughts.<br><br>
+“Going to sleep now” usually meant another two hours of talking.<br>
+I found myself checking my phone every minute, addicted to the way<br>
+you understood the parts of me I never even mentioned.
 </p>
-
 <img src="images/instagram.jpg" class="memory-photo">
 </section>
 
-<!-- SIDE GAP MEMORIES -->
 <section class="fade-section">
-<h2>Stolen Moments</h2>
+<h2>The Beauty of Stolen Seconds</h2>
 <p>
-Small side gaps.  
-Quick glances.  
-Accidental hand touches that weren’t accidental.
-
-Those seconds built a forever.
+College wasn’t about the lectures; it was about the 'side gaps.'<br>
+Those hidden corners where we shared quick glances and heavy silences.<br><br>
+The world saw two people walking past each other,<br>
+but we felt the electricity of accidental hand touches that were entirely on purpose.<br>
+Those small, stolen moments built the foundation of our forever.
 </p>
-
 <img src="images/college.jpg" class="memory-photo">
 </section>
 
-<!-- STORM PHASE -->
 <section class="fade-section">
-<h2>When It Wasn’t Easy</h2>
+<h2 class="gold-text">When Time Stood Still</h2>
 <p>
-There were doubts.  
-There were fears.  
-There were nights that tested us.
-
-But there was never a moment  
-we chose to walk away.
+Then came the storm. The world tried to silence us.<br>
+<strong>No texts. No calls. No way to reach you.</strong><br><br>
+But they underestimated our stubbornness. We had neighbors who became allies,<br>
+friends who played messengers, and that legendary night where I had to<br>
+<strong>hijack Grandmother’s phone</strong> just to hear your breath on the other side.<br><br>
+We proved that no wall is high enough when two hearts refuse to let go.
 </p>
-
 <img src="images/storm.jpg" class="memory-photo">
 </section>
 
-<!-- TEMPLE -->
 <section class="fade-section">
-<h2>29 August 2026 — 7:00 AM</h2>
+<h2>29 August 2026 — The Vow</h2>
 <p>
-Temple bells.  
-Morning light.  
-Sacred promises.
-
-That day, you didn’t just hold my hand.
-
-You became my forever.
+7:00 AM. The air was cool, the temple bells were rhythmic, and my heart was racing.<br><br>
+Under the sacred witness of the morning light, the struggle ended and our life began.<br>
+When I tied that knot, it wasn't just a tradition—it was a promise<br>
+that I would protect your peace as fiercely as you protected our love.
 </p>
-
 <img src="images/wedding.jpg" class="memory-photo">
 </section>
 
-<!-- HONEYMOON -->
 <section class="fade-section">
-<h2>Our First Adventures</h2>
+<h2>Across Borders, Hand in Hand</h2>
 <p>
-Malaysia.  
-Bali.  
-Sunsets that felt cinematic.
-
-Holding your hand in a foreign land  
-felt like building a life from scratch.
+From the vibrant streets of Malaysia to the golden sunsets of Bali.<br>
+Exploring the world with you felt like seeing colors for the first time.<br><br>
+Waking up in a foreign land and seeing your face next to mine<br>
+reminded me that 'home' isn't a place with an address—it's you.
 </p>
-
 <img src="images/honeymoon.jpg" class="memory-photo">
 </section>
 
-<!-- EVERYDAY LOVE -->
 <section class="fade-section">
-<h2>The Real Magic</h2>
+<h2>The Chaos We Call Home</h2>
 <p>
-Your random anger.  
-Your jealousy.  
-Your stubbornness.
-
-Our inside jokes.  
-Our gossip.  
-Our silent understanding.
-
-That’s not drama.  
-That’s comfort.
+It’s not just the grand moments; it’s the beautiful mess in between.<br>
+Your random mood swings, your adorable jealousy, and that stubborn streak<br>
+that I’ve secretly grown to love. <br><br>
+Our endless gossip, our shared silence, and the way you know exactly<br>
+what I’m thinking without me saying a word. That’s the real magic.
 </p>
-
 <img src="images/everyday.jpg" class="memory-photo">
 </section>
 
-<!-- FUTURE -->
 <section class="fade-section">
-<h2>And This Is Just The Beginning</h2>
+<h2 class="gold-text">To Infinity & Beyond</h2>
 <p>
-More trips.  
-More fights.  
-More laughter.  
-More memories.
-
-From strangers  
-to soulmates.
-
-From infinity idea  
-to infinity life.
+This isn't the end of the story; it's just the prologue.<br>
+To more flights, more fights, more midnight snacks, and a million more memories.<br><br>
+We started as strangers chasing biriyani,<br>
+and now we are soulmates chasing the horizon.<br><br>
+<strong>I love you, Ramya. Always.</strong>
 </p>
 </section>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* Cinematic Fade */
-gsap.utils.toArray(".fade-section").forEach(sec=>{
-gsap.to(sec,{
-scrollTrigger:{trigger:sec,start:"top 80%"},
-opacity:1,
-y:0,
-duration:1.5,
-ease:"power3.out"
+/* Intro Reveal */
+window.addEventListener('load', () => {
+const tl = gsap.timeline();
+tl.to(".intro-content", {
+opacity: 1,
+y: 0,
+duration: 2.5,
+ease: "power4.out"
+});
+tl.from(".gold-text", {
+backgroundPosition: "200% center",
+duration: 2,
+ease: "power2.inOut"
+}, "-=1.5");
+});
+
+/* Scroll Animations */
+gsap.utils.toArray(".fade-section").forEach(sec => {
+gsap.to(sec, {
+scrollTrigger: {
+trigger: sec,
+start: "top 85%",
+toggleActions: "play none none none"
+},
+opacity: 1,
+y: 0,
+duration: 1.8,
+ease: "power3.out"
 });
 });
 
-/* Slow Depth Zoom */
-gsap.to("#depthLayer",{
-scale:1.2,
-scrollTrigger:{scrub:true}
+/* Zoom Depth effect */
+gsap.to("#depthLayer", {
+scale: 1.3,
+scrollTrigger: {
+trigger: "body",
+start: "top top",
+end: "bottom bottom",
+scrub: 1.5
+}
 });
 
-/* Heart Shower */
-const canvas=document.getElementById("heartCanvas");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+/* Hearts */
+const canvas = document.getElementById("heartCanvas");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-let hearts=[];
-for(let i=0;i<35;i++){
+let hearts = [];
+for(let i=0; i<45; i++){
 hearts.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-size:Math.random()*15+8,
-speed:Math.random()*0.7+0.3
+x: Math.random() * canvas.width,
+y: Math.random() * canvas.height,
+size: Math.random() * 12 + 6,
+speed: Math.random() * 0.4 + 0.2,
+opacity: Math.random() * 0.5 + 0.2
 });
 }
 
-function drawHeart(x,y,size){
+function drawHeart(x, y, size, opacity) {
 ctx.beginPath();
-ctx.moveTo(x,y);
-ctx.bezierCurveTo(x-size/2,y-size/2,x-size,y+size/3,x,y+size);
-ctx.bezierCurveTo(x+size,y+size/3,x+size/2,y-size/2,x,y);
-ctx.fillStyle="rgba(255,0,90,0.5)";
+ctx.moveTo(x, y);
+ctx.bezierCurveTo(x - size/2, y - size/2, x - size, y + size/3, x, y + size);
+ctx.bezierCurveTo(x + size, y + size/3, x + size/2, y - size/2, x, y);
+ctx.fillStyle = `rgba(255, 120, 160, ${opacity})`;
 ctx.fill();
 }
 
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-hearts.forEach(h=>{
-drawHeart(h.x,h.y,h.size);
-h.y+=h.speed;
-if(h.y>canvas.height)h.y=-20;
+function animate() {
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+hearts.forEach(h => {
+drawHeart(h.x, h.y, h.size, h.opacity);
+h.y += h.speed;
+if(h.y > canvas.height) h.y = -20;
 });
 requestAnimationFrame(animate);
 }
 animate();
+
+/* Music Trigger */
+window.addEventListener('click', () => {
+const audio = document.getElementById('bgMusic');
+if(audio.paused) audio.play();
+}, { once: true });
 </script>
 
 </body>
