@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ramya & Yuvaraj | Our Story</title>
+<title>Yuvaraj ❤️ Ramya | Our Story</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
@@ -13,32 +13,28 @@
 <style>
 body{
 margin:0;
-font-family:'Poppins',sans-serif;
-background:#060b1f;
+background:#050816;
 color:white;
+font-family:'Poppins',sans-serif;
 overflow-x:hidden;
 }
 
-/* Premium Background Layers */
-.bg-gradient{
+/* Cinematic Background */
+.bg{
 position:fixed;
 width:100%;
 height:100vh;
-background:radial-gradient(circle at 50% 40%,#13224d,#060b1f 70%);
+background:radial-gradient(circle at 50% 30%,#162447,#050816 70%);
 z-index:-3;
 }
 
-.bg-glow{
+/* Slow Depth Zoom */
+.depth{
 position:fixed;
-width:100%;
-height:100vh;
-background:radial-gradient(circle at center,rgba(255,215,0,0.08),transparent 60%);
+width:120%;
+height:120%;
+background:radial-gradient(circle,rgba(255,215,0,0.08),transparent 60%);
 z-index:-2;
-animation:glowMove 8s infinite alternate ease-in-out;
-}
-@keyframes glowMove{
-0%{transform:translateY(-20px);}
-100%{transform:translateY(20px);}
 }
 
 /* Sections */
@@ -48,86 +44,50 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+padding:80px 20px;
 text-align:center;
-padding:60px 20px;
+opacity:0;
 }
 
 h1{
 font-family:'Playfair Display',serif;
-font-size:3.5rem;
+font-size:3.8rem;
 margin-bottom:20px;
 }
 
 h2{
 font-family:'Playfair Display',serif;
-font-size:2.2rem;
-margin-bottom:20px;
+font-size:2.4rem;
+margin-bottom:30px;
 }
 
 p{
-max-width:800px;
+max-width:850px;
 font-size:1.2rem;
-line-height:1.9;
+line-height:2;
 opacity:0.9;
 }
 
-.reveal{
-opacity:0;
-transform:translateY(60px);
-}
-
-/* Premium Button */
-.btn{
-margin-top:30px;
-padding:14px 30px;
-border-radius:40px;
-border:1px solid gold;
-background:transparent;
-color:gold;
-font-weight:600;
-cursor:pointer;
-transition:0.4s;
-}
-.btn:hover{
-background:gold;
-color:black;
-}
-
-/* Glass Love Letter Modal */
-#modal{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.75);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:9999;
-backdrop-filter:blur(10px);
-}
-
-#modalBox{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,215,0,0.3);
-padding:50px;
+/* Photo Frame */
+.memory-photo{
+margin-top:40px;
+max-width:800px;
+width:90%;
 border-radius:20px;
-max-width:700px;
-white-space:pre-line;
-line-height:1.9;
-border-right:2px solid gold;
+box-shadow:0 20px 60px rgba(0,0,0,0.6);
+transition:transform 0.6s ease;
+}
+.memory-photo:hover{
+transform:scale(1.03);
 }
 
-.close{
-position:absolute;
-top:30px;
-right:40px;
-font-size:1.5rem;
-cursor:pointer;
+/* Fade Sections */
+.fade-section{
+opacity:0;
+transform:translateY(80px);
 }
 
-/* Floating Light Particles */
+/* Heart Shower */
 canvas{
 position:fixed;
 top:0;
@@ -135,166 +95,228 @@ left:0;
 pointer-events:none;
 z-index:-1;
 }
+
+/* Music */
+audio{
+display:none;
+}
 </style>
 </head>
 
 <body>
 
-<div class="bg-gradient"></div>
-<div class="bg-glow"></div>
-<canvas id="particles"></canvas>
+<div class="bg"></div>
+<div class="depth" id="depthLayer"></div>
+<canvas id="heartCanvas"></canvas>
+
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8f49b4f42e.mp3" type="audio/mpeg">
+</audio>
 
 <!-- INTRO -->
 <section>
-<h1 class="reveal">Ramya & Yuvaraj</h1>
-<p class="reveal">A love story that began unexpectedly and became infinite.</p>
-<button class="btn" id="openLetter">Read Our Love Letter</button>
-</section>
-
-<!-- BEGINNING -->
-<section>
-<h2 class="reveal">Where It All Began</h2>
-<p class="reveal">
-What started as a simple journey searching for biryani,
-led me to discover something far greater — an angel in disguise.
-
-Late-night Instagram conversations,
-stolen college break moments,
-and quiet smiles that meant everything.
+<h1>Yuvaraj ❤️ Ramya</h1>
+<p>
+From a wedding invitation...  
+to a lifetime invitation.
 </p>
 </section>
 
-<!-- GROWTH -->
-<section>
-<h2 class="reveal">The Bond That Grew</h2>
-<p class="reveal">
-Through playful arguments,
-gentle apologies,
-and countless inside jokes —
-our connection strengthened beyond limits.
+<!-- BIRIYANI MOMENT -->
+<section class="fade-section">
+<h2>It Started With Biriyani</h2>
+<p>
+I didn’t attend that wedding looking for love.  
+I came for the food.
 
-Somewhere between laughter and silence,
-we chose each other.
-Forever.
+But somewhere between the aroma of celebration  
+and the noise of the crowd —  
+I saw you.
+
+And suddenly, everything else blurred.
 </p>
+
+<img src="images/biriyani.jpg" class="memory-photo">
 </section>
 
-<!-- WEDDING -->
-<section>
-<h2 class="reveal">Sacred Beginnings</h2>
-<p class="reveal">
-With divine blessings and joined hands,
-we stepped into a new chapter —
-not just as lovers,
-but as partners for life.
+<!-- TATTOO MOMENT -->
+<section class="fade-section">
+<h2>The Question That Changed Everything</h2>
+<p>
+“Where did you get your tattoo?”
+
+One simple question.  
+One confident smile.  
+And my heart made a decision without informing me.
+
+Infinity wasn’t just an idea anymore.
 </p>
+
+<img src="images/tattoo.jpg" class="memory-photo">
+</section>
+
+<!-- INSTAGRAM PHASE -->
+<section class="fade-section">
+<h2>Late Night Conversations</h2>
+<p>
+It started with replies.  
+Then longer chats.  
+Then faster responses.
+
+“Just five minutes” became two hours.  
+And slowly… you became my comfort.
+</p>
+
+<img src="images/instagram.jpg" class="memory-photo">
+</section>
+
+<!-- SIDE GAP MEMORIES -->
+<section class="fade-section">
+<h2>Stolen Moments</h2>
+<p>
+Small side gaps.  
+Quick glances.  
+Accidental hand touches that weren’t accidental.
+
+Those seconds built a forever.
+</p>
+
+<img src="images/college.jpg" class="memory-photo">
+</section>
+
+<!-- STORM PHASE -->
+<section class="fade-section">
+<h2>When It Wasn’t Easy</h2>
+<p>
+There were doubts.  
+There were fears.  
+There were nights that tested us.
+
+But there was never a moment  
+we chose to walk away.
+</p>
+
+<img src="images/storm.jpg" class="memory-photo">
+</section>
+
+<!-- TEMPLE -->
+<section class="fade-section">
+<h2>29 August 2026 — 7:00 AM</h2>
+<p>
+Temple bells.  
+Morning light.  
+Sacred promises.
+
+That day, you didn’t just hold my hand.
+
+You became my forever.
+</p>
+
+<img src="images/wedding.jpg" class="memory-photo">
 </section>
 
 <!-- HONEYMOON -->
-<section>
-<h2 class="reveal">Our Honeymoon Journey</h2>
-<p class="reveal">
-From Malaysia’s city lights
-to the serene beauty of Bali,
-every destination became a memory,
-every memory became timeless.
+<section class="fade-section">
+<h2>Our First Adventures</h2>
+<p>
+Malaysia.  
+Bali.  
+Sunsets that felt cinematic.
+
+Holding your hand in a foreign land  
+felt like building a life from scratch.
 </p>
+
+<img src="images/honeymoon.jpg" class="memory-photo">
 </section>
 
-<!-- FINALE -->
-<section>
-<h2 class="reveal">And So It Continues...</h2>
-<p class="reveal">
-Through seasons, through years,
-through every storm and sunrise —
-our story moves forward.
+<!-- EVERYDAY LOVE -->
+<section class="fade-section">
+<h2>The Real Magic</h2>
+<p>
+Your random anger.  
+Your jealousy.  
+Your stubbornness.
 
-Not just in this lifetime,
-but in every one that follows.
+Our inside jokes.  
+Our gossip.  
+Our silent understanding.
+
+That’s not drama.  
+That’s comfort.
 </p>
+
+<img src="images/everyday.jpg" class="memory-photo">
 </section>
 
-<!-- MODAL -->
-<div id="modal">
-<div class="close" id="closeModal">✖</div>
-<div id="modalBox"></div>
-</div>
+<!-- FUTURE -->
+<section class="fade-section">
+<h2>And This Is Just The Beginning</h2>
+<p>
+More trips.  
+More fights.  
+More laughter.  
+More memories.
+
+From strangers  
+to soulmates.
+
+From infinity idea  
+to infinity life.
+</p>
+</section>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* Scroll Reveal */
-gsap.utils.toArray(".reveal").forEach(el=>{
-gsap.to(el,{
-scrollTrigger:{trigger:el,start:"top 85%"},
-opacity:1,y:0,duration:1.5,ease:"power3.out"
+/* Cinematic Fade */
+gsap.utils.toArray(".fade-section").forEach(sec=>{
+gsap.to(sec,{
+scrollTrigger:{trigger:sec,start:"top 80%"},
+opacity:1,
+y:0,
+duration:1.5,
+ease:"power3.out"
 });
 });
 
-/* Love Letter Typewriter */
-const letterText=`My Love,
+/* Slow Depth Zoom */
+gsap.to("#depthLayer",{
+scale:1.2,
+scrollTrigger:{scrub:true}
+});
 
-What began as a simple conversation
-became the most beautiful chapter of my life.
-
-You turned ordinary moments
-into extraordinary memories.
-
-From laughter to lessons,
-from distance to destiny,
-we chose each other every single time.
-
-And I promise —
-to keep choosing you,
-again and again,
-for the rest of my life.
-
-Forever yours. ❤️`;
-
-const modal=document.getElementById("modal");
-const box=document.getElementById("modalBox");
-
-document.getElementById("openLetter").onclick=()=>{
-modal.style.display="flex";
-box.innerHTML="";
-let i=0;
-function type(){
-if(i<letterText.length){
-box.innerHTML+=letterText.charAt(i);
-i++;
-setTimeout(type,35);
-}
-}
-type();
-};
-
-document.getElementById("closeModal").onclick=()=>modal.style.display="none";
-
-/* Premium Floating Light Particles */
-const canvas=document.getElementById("particles");
+/* Heart Shower */
+const canvas=document.getElementById("heartCanvas");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
 
-let lights=[];
-for(let i=0;i<60;i++){
-lights.push({
+let hearts=[];
+for(let i=0;i<35;i++){
+hearts.push({
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
-r:Math.random()*2+1,
-d:Math.random()*0.5+0.2
+size:Math.random()*15+8,
+speed:Math.random()*0.7+0.3
 });
+}
+
+function drawHeart(x,y,size){
+ctx.beginPath();
+ctx.moveTo(x,y);
+ctx.bezierCurveTo(x-size/2,y-size/2,x-size,y+size/3,x,y+size);
+ctx.bezierCurveTo(x+size,y+size/3,x+size/2,y-size/2,x,y);
+ctx.fillStyle="rgba(255,0,90,0.5)";
+ctx.fill();
 }
 
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle="rgba(255,215,0,0.6)";
-lights.forEach(p=>{
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fill();
-p.y-=p.d;
-if(p.y<0)p.y=canvas.height;
+hearts.forEach(h=>{
+drawHeart(h.x,h.y,h.size);
+h.y+=h.speed;
+if(h.y>canvas.height)h.y=-20;
 });
 requestAnimationFrame(animate);
 }
