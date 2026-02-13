@@ -19,7 +19,6 @@ font-family: 'Poppins', sans-serif;
 overflow-x: hidden;
 }
 
-/* Background Atmosphere */
 .bg {
 position: fixed;
 width: 100%;
@@ -28,139 +27,82 @@ background: radial-gradient(circle at 50% 30%, #162447, #050816 70%);
 z-index: -3;
 }
 
-.depth {
-position: fixed;
-width: 120%;
-height: 120%;
-background: radial-gradient(circle, rgba(255, 215, 0, 0.08), transparent 60%);
-z-index: -2;
-}
-
 section {
 min-height: 100vh;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-padding: 100px 20px;
+padding: 80px 20px;
 text-align: center;
 }
 
-/* Gold Shimmer Text */
 .gold-text {
 background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #bf953f);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 background-size: 200% auto;
 animation: shimmer 4s linear infinite;
-filter: drop-shadow(0 0 10px rgba(191, 149, 63, 0.3));
 }
 
 @keyframes shimmer {
 to { background-position: 200% center; }
 }
 
-h1 {
-font-family: 'Playfair Display', serif;
-font-size: clamp(2.5rem, 8vw, 4.5rem);
-margin-bottom: 20px;
-}
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 10px; }
+h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; color: #fcf6ba; }
+p { max-width: 800px; font-size: 1.1rem; line-height: 1.8; opacity: 0.9; margin-bottom: 40px; }
 
-h2 {
-font-family: 'Playfair Display', serif;
-font-size: 2.8rem;
-margin-bottom: 30px;
-color: #fcf6ba;
-}
-
-p {
-max-width: 850px;
-font-size: 1.15rem;
-line-height: 2.2;
-opacity: 0.85;
-}
-
-/* Fixed Grid - No Cropping */
+/* CLUSTER ALLOCATION - NO CROPPING */
 .image-cluster {
-margin-top: 60px;
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
-align-items: center; 
-gap: 25px;
+align-items: center; /* Ensures images of different heights align to the middle */
+gap: 20px;
 width: 100%;
-max-width: 1300px;
+max-width: 1200px;
 }
 
 .image-cluster img {
-width: auto; 
+display: block;
+width: auto;
 height: auto;
-max-width: clamp(280px, 30vw, 400px); 
-max-height: 500px; 
-object-fit: contain; 
-border-radius: 12px;
-box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+max-width: clamp(280px, 30vw, 380px); /* Adjusts based on screen size */
+max-height: 500px; /* Safety limit for very long portrait photos */
+object-fit: contain; /* Explicitly prevents cropping */
+border-radius: 10px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+transition: transform 0.4s ease;
 }
 
 .image-cluster img:hover {
-transform: scale(1.05);
-z-index: 5;
-box-shadow: 0 20px 60px rgba(191, 149, 63, 0.2);
+transform: scale(1.03);
 }
 
-.fade-section {
-opacity: 0;
-transform: translateY(50px);
-}
+.fade-section { opacity: 0; transform: translateY(30px); }
 
-canvas {
-position: fixed;
-top: 0;
-left: 0;
-pointer-events: none;
-z-index: -1;
-}
-
-/* Scroll Indicator */
-.scroll-hint {
-position: absolute;
-bottom: 30px;
-opacity: 0.6;
-font-size: 0.9rem;
-letter-spacing: 2px;
-animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-40% {transform: translateY(-10px);}
-60% {transform: translateY(-5px);}
-}
+canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 </style>
 </head>
 
 <body>
 
 <div class="bg"></div>
-<div class="depth" id="depthLayer"></div>
 <canvas id="heartCanvas"></canvas>
 
 <audio id="bgMusic" loop>
 <source src="audio/background_music.mp3" type="audio/mpeg">
 </audio>
 
-<section id="intro">
-<div class="intro-content">
+<section>
 <h1 class="gold-text">Yuvaraj ❤️ Ramya</h1>
-<p>In Search of Biriyani.... I Just Lost My Heart & Peace to you my love....</p>
-</div>
-<div class="scroll-hint">SCROLL TO EXPLORE</div>
+<p>A journey that began with a plate of biriyani... and led to forever.</p>
 </section>
 
 <section class="fade-section">
 <h2>The Flavor of First Sight</h2>
-<p>I walked into that wedding for the food counter. But amidst the steam of the biriyani and the noise of the crowd, my eyes caught yours. Suddenly, the food didn't matter anymore.</p>
+<p>I walked into that wedding for the food... but I left with your image in my heart.</p>
 <div class="image-cluster">
 <img src="images/biriyani_1.jpg">
 <img src="images/biriyani_2.jpg">
@@ -170,7 +112,7 @@ animation: bounce 2s infinite;
 
 <section class="fade-section">
 <h2>A Spark in a Question</h2>
-<p>“Where did you get your tattoo?” One simple question, one confident smile. Infinity wasn’t just a design anymore—it became the time I wanted to spend by your side.</p>
+<p>“Where did you get your tattoo?” That simple start became our infinity.</p>
 <div class="image-cluster">
 <img src="images/tattoo_1.jpg">
 <img src="images/tattoo_2.jpg">
@@ -180,7 +122,7 @@ animation: bounce 2s infinite;
 
 <section class="fade-section">
 <h2>Digital Echoes</h2>
-<p>Casual story replies turned into paragraphs. Late-night chats and the blue glow of our screens became our secret world. I was addicted to the way you understood me.</p>
+<p>The blue glow of Instagram was where our hearts first started talking.</p>
 <div class="image-cluster">
 <img src="images/instagram_1.jpg">
 <img src="images/instagram_2.jpg">
@@ -190,7 +132,7 @@ animation: bounce 2s infinite;
 
 <section class="fade-section">
 <h2>Stolen Seconds</h2>
-<p>College side-gaps and hidden corners. The world saw two people walking past, but we felt the electricity of hand touches that were entirely on purpose.</p>
+<p>College side-gaps and hidden corners. Every glance was a secret promise.</p>
 <div class="image-cluster">
 <img src="images/college_1.jpg">
 <img src="images/college_2.jpg">
@@ -200,7 +142,7 @@ animation: bounce 2s infinite;
 
 <section class="fade-section">
 <h2 class="gold-text">The Silent Storm</h2>
-<p>No texts. No calls. Total silence from the world. But we had neighbors as messengers, friends as allies, and that legendary mission of hijacking grandmother’s phone just to hear you.</p>
+<p>No texts. No calls. Just neighbors helping and that secret mission to hijack grandmother's phone.</p>
 <div class="image-cluster">
 <img src="images/storm_1.jpg">
 <img src="images/storm_2.jpg">
@@ -209,8 +151,8 @@ animation: bounce 2s infinite;
 </section>
 
 <section class="fade-section">
-<h2>29 August 2026 — The Vow</h2>
-<p>7:00 AM. Temple bells and sacred promises. Under the morning light, all those hurdles faded away. That day, you didn’t just hold my hand—you became my forever.</p>
+<h2>The Vow — 29 August 2026</h2>
+<p>Under the temple bells, we tied the knot that changed our lives forever.</p>
 <div class="image-cluster">
 <img src="images/wedding_1.jpg">
 <img src="images/wedding_2.jpg">
@@ -220,7 +162,7 @@ animation: bounce 2s infinite;
 
 <section class="fade-section">
 <h2>Across Borders</h2>
-<p>From Malaysia to Bali. Exploring new lands with you felt like seeing the world in color for the first time. Realizing that home is wherever you are.</p>
+<p>Malaysia and Bali. Seeing the world with you is the only way I want to see it.</p>
 <div class="image-cluster">
 <img src="images/honeymoon_1.jpg">
 <img src="images/honeymoon_2.jpg">
@@ -230,7 +172,7 @@ animation: bounce 2s infinite;
 
 <section class="fade-section">
 <h2>The Real Magic</h2>
-<p>Mood swings, adorable jealousy, and that stubborn streak I’ve grown to love. The gossip, the shared silence—this beautiful chaos is what I call home.</p>
+<p>Our fights, our laughs, and the beautiful chaos of our everyday life.</p>
 <div class="image-cluster">
 <img src="images/everyday_1.jpg">
 <img src="images/everyday_2.jpg">
@@ -240,7 +182,7 @@ animation: bounce 2s infinite;
 
 <section class="fade-section">
 <h2 class="gold-text">To Infinity & Beyond</h2>
-<p>This is just the prologue of our story. To more flights, more fights, and a million more memories. I love you, Ramya. Always.</p>
+<p>This is just the start. I love you, Ramya.</p>
 <div class="image-cluster">
 <img src="images/future_1.jpg">
 <img src="images/future_2.jpg">
@@ -251,29 +193,27 @@ animation: bounce 2s infinite;
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// Reveal sections on scroll
 gsap.utils.toArray(".fade-section").forEach(sec => {
 gsap.to(sec, {
 scrollTrigger: { trigger: sec, start: "top 85%" },
-opacity: 1, y: 0, duration: 1.5, ease: "power2.out"
+opacity: 1, y: 0, duration: 1.2
 });
 });
 
-// Floating Hearts Animation
 const canvas = document.getElementById("heartCanvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let hearts = [];
-for(let i=0; i<40; i++){
-hearts.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, size: Math.random()*10+5, speed: Math.random()*0.5+0.2 });
+for(let i=0; i<30; i++){
+hearts.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, size: Math.random()*8+4, speed: Math.random()*0.4+0.1 });
 }
 function drawHeart(x, y, size) {
 ctx.beginPath();
 ctx.moveTo(x, y);
 ctx.bezierCurveTo(x-size/2, y-size/2, x-size, y+size/3, x, y+size);
 ctx.bezierCurveTo(x+size, y+size/3, x+size/2, y-size/2, x, y);
-ctx.fillStyle = "rgba(255, 182, 193, 0.4)";
+ctx.fillStyle = "rgba(255, 182, 193, 0.3)";
 ctx.fill();
 }
 function animate() {
@@ -287,7 +227,6 @@ requestAnimationFrame(animate);
 }
 animate();
 
-// Background Music Play on First Click
 window.addEventListener('click', () => {
 const audio = document.getElementById('bgMusic');
 if(audio.paused) audio.play();
