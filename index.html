@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yuvaraj ❤️ Ramya | Our Story</title>
+<title>Yuvaraj ❤️ Ramya | Our Eternal Story</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
 
@@ -32,7 +32,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-padding: 60px 20px;
+padding: 120px 24px;
 text-align: center;
 }
 
@@ -46,48 +46,69 @@ animation: shimmer 4s linear infinite;
 
 @keyframes shimmer { to { background-position: 200% center; } }
 
-h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 3.5rem); margin-bottom: 10px; }
-h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 15px; color: #fcf6ba; }
-p { max-width: 700px; font-size: 1.05rem; line-height: 1.6; opacity: 0.85; margin-bottom: 30px; }
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 9vw, 5rem); margin-bottom: 25px; letter-spacing: -1px; }
+h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 30px; color: #fcf6ba; }
 
-/* THE GALLERY GRID - UNIFORM THUMBNAILS */
+p { 
+max-width: 1000px; 
+font-size: 1.25rem; 
+line-height: 2.2; 
+opacity: 0.9; 
+margin-bottom: 60px;
+letter-spacing: 0.3px;
+font-weight: 300;
+}
+
+.love-note-text {
+font-family: 'Playfair Display', serif;
+font-style: italic;
+font-size: 1.6rem;
+color: #fcf6ba;
+line-height: 2.4;
+max-width: 850px;
+padding: 40px;
+border-left: 1px solid rgba(252, 246, 186, 0.3);
+border-right: 1px solid rgba(252, 246, 186, 0.3);
+}
+
 .gallery-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 20px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 30px;
 width: 100%;
-max-width: 900px;
-margin: 0 auto;
+max-width: 1200px;
 }
 
 .thumb-window {
-aspect-ratio: 1 / 1; /* Makes every window a perfect square */
-background: rgba(255, 255, 255, 0.05);
-border: 1px solid rgba(255, 215, 0, 0.1);
-border-radius: 12px;
+width: 300px;
+height: 300px;
+background: rgba(255, 255, 255, 0.02);
+border: 1px solid rgba(191, 149, 63, 0.15);
+border-radius: 20px;
 display: flex;
 justify-content: center;
 align-items: center;
 overflow: hidden;
-transition: all 0.4s ease;
-padding: 10px; /* Space between image and window border */
+padding: 18px;
+transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .thumb-window img {
 max-width: 100%;
 max-height: 100%;
-object-fit: contain; /* NO CROPPING - Full image fits inside */
-border-radius: 4px;
+object-fit: contain;
+border-radius: 10px;
 }
 
 .thumb-window:hover {
-transform: translateY(-10px);
-background: rgba(255, 255, 255, 0.1);
-border-color: #bf953f;
-box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+transform: translateY(-15px) scale(1.02);
+background: rgba(255, 255, 255, 0.08);
+border-color: #fcf6ba;
+box-shadow: 0 25px 50px rgba(0,0,0,0.7);
 }
 
-.fade-section { opacity: 0; transform: translateY(30px); }
+.fade-section { opacity: 0; transform: translateY(60px); }
 canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 </style>
 </head>
@@ -103,12 +124,13 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 
 <section>
 <h1 class="gold-text">Yuvaraj ❤️ Ramya</h1>
-<p>In Search of Biriyani... I Just Lost My Heart & Peace to you my love.</p>
+<p>“In search of Biriyani... I just lost my heart and peace to you, my love.”<br>
+What began as a random encounter turned into a beautiful destiny that neither of us saw coming.</p>
 </section>
 
 <section class="fade-section">
 <h2>The Flavor of First Sight</h2>
-<p>I walked into that wedding for the food... but I left with your image in my heart.</p>
+<p>I walked into that wedding hall with a very simple goal: find the food counter. But as the aroma of the biriyani filled the air, my world suddenly shifted. Amidst the clinking of plates and the laughter of strangers, my eyes found yours. The steam cleared, the noise faded into a hum, and for a split second, time simply stopped. I came for a meal, but I left with a memory of a face I knew I could never forget.</p>
 <div class="gallery-grid">
 <div class="thumb-window"><img src="images/biriyani_1.jpg"></div>
 <div class="thumb-window"><img src="images/biriyani_2.jpg"></div>
@@ -118,7 +140,7 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 
 <section class="fade-section">
 <h2>A Spark in a Question</h2>
-<p>“Where did you get your tattoo?” One question, infinity answers.</p>
+<p>“Where did you get your tattoo?” It was a question I used just to hear you speak, but the way you turned and smiled changed everything. We were strangers, yet there was an unexplainable comfort in that first conversation. In that moment, the 'Infinity' symbol on your skin stopped being just ink—it became a prophecy. I didn't know it then, but that was the first day of the rest of my life.</p>
 <div class="gallery-grid">
 <div class="thumb-window"><img src="images/tattoo_1.jpg"></div>
 <div class="thumb-window"><img src="images/tattoo_2.jpg"></div>
@@ -127,8 +149,8 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 </section>
 
 <section class="fade-section">
-<h2>Digital Echoes</h2>
-<p>The blue glow of Instagram was where our hearts first started talking.</p>
+<h2>Digital Echoes & 3 AM Hearts</h2>
+<p>Instagram wasn't just an app for us; it was our bridge. What started as casual story replies soon evolved into deep, late-night paragraphs that lasted until the sun came up. We shared our dreams, our fears, and our silly jokes through the blue glow of our phone screens. Every notification was a heartbeat, and every message was a brick in the foundation of the love we were building in secret.</p>
 <div class="gallery-grid">
 <div class="thumb-window"><img src="images/instagram_1.jpg"></div>
 <div class="thumb-window"><img src="images/instagram_2.jpg"></div>
@@ -137,8 +159,8 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 </section>
 
 <section class="fade-section">
-<h2>Stolen Seconds</h2>
-<p>College side-gaps and hidden corners. Every glance was a secret promise.</p>
+<h2>The Beauty of Stolen Seconds</h2>
+<p>College life wasn't about the textbooks or the degrees; for us, it was about the 'side gaps.' Those narrow corridors and hidden corners became our sanctuary. We perfected the art of the secret glance and the brief, electric hand-touch that the world wasn't supposed to see. Those stolen seconds felt more valuable than hours, proving that even in a crowd, we were always in a world of our own.</p>
 <div class="gallery-grid">
 <div class="thumb-window"><img src="images/college_1.jpg"></div>
 <div class="thumb-window"><img src="images/college_2.jpg"></div>
@@ -148,7 +170,7 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 
 <section class="fade-section">
 <h2 class="gold-text">The Silent Storm</h2>
-<p>Communication was cut, but our hearts stayed loud. Hijacking phones and secret messages.</p>
+<p>Every great love story has its test, and ours was the silence. When the world tried to pull us apart and cut our connection, we didn't give up. We became rebels for love. From neighbors carrying our handwritten notes to friends playing the role of secret allies, we fought back. I remember the adrenaline of hijacking Grandmother’s phone just to hear your voice for sixty seconds—a reminder that no wall was high enough to keep me from you.</p>
 <div class="gallery-grid">
 <div class="thumb-window"><img src="images/storm_1.jpg"></div>
 <div class="thumb-window"><img src="images/storm_2.jpg"></div>
@@ -157,8 +179,8 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 </section>
 
 <section class="fade-section">
-<h2>The Vow — 29 August 2026</h2>
-<p>Under the temple bells, our forever officially began.</p>
+<h2>29 August 2026 — The Vow</h2>
+<p>The morning of August 29th was different. The air in the temple felt sacred, and the sound of the bells felt like a victory song. After all the struggles, the secrets, and the silence, we finally stood before the divine as one. When I tied that knot, I wasn't just promising a future; I was thanking the universe for giving me the strength to win you. That day, you didn't just become my wife—you became my destiny.</p>
 <div class="gallery-grid">
 <div class="thumb-window"><img src="images/wedding_1.jpg"></div>
 <div class="thumb-window"><img src="images/wedding_2.jpg"></div>
@@ -167,8 +189,8 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 </section>
 
 <section class="fade-section">
-<h2>Across Borders</h2>
-<p>From Malaysia to Bali. Home is whenever I am with you.</p>
+<h2>Across Borders, Hand in Hand</h2>
+<p>From the bustling, vibrant streets of Malaysia to the spiritual sunsets of Bali, the world became our playground. But I realized something on those flights and long walks—the scenery didn't matter as much as the person standing next to me. Whether we were lost in a foreign city or sitting on a quiet beach, 'home' wasn't a coordinate on a map anymore. Home was simply wherever your hand was in mine.</p>
 <div class="gallery-grid">
 <div class="thumb-window"><img src="images/honeymoon_1.jpg"></div>
 <div class="thumb-window"><img src="images/honeymoon_2.jpg"></div>
@@ -177,8 +199,8 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 </section>
 
 <section class="fade-section">
-<h2>The Real Magic</h2>
-<p>The chaos, the jealousy, and the love. Our beautiful everyday life.</p>
+<h2>The Beautiful Chaos of Us</h2>
+<p>Real love isn't just about the sunsets; it's about the mood swings, the playful jealousy, and the stubborn arguments that always end in laughter. I love the way we gossip about the world, the way we understand each other's silence, and even the way you get annoyed with me. This messy, unpredictable, and chaotic life we share is more perfect than any fairy tale I could have ever imagined.</p>
 <div class="gallery-grid">
 <div class="thumb-window"><img src="images/everyday_1.jpg"></div>
 <div class="thumb-window"><img src="images/everyday_2.jpg"></div>
@@ -187,9 +209,12 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 </section>
 
 <section class="fade-section">
-<h2 class="gold-text">To Infinity & Beyond</h2>
-<p>I love you, Ramya. Always.</p>
-<div class="gallery-grid">
+<h2 class="gold-text">My Infinite Promise</h2>
+<div class="love-note-text">
+Ramya, thank you for being the woman who stayed when things were hard and laughed when things were easy. You are my peace, my partner, and my greatest adventure. As we look toward the future, I promise to keep choosing you, every single day, in every single lifetime.<br><br>
+To Infinity and Beyond, My Love.
+</div>
+<div class="gallery-grid" style="margin-top: 60px;">
 <div class="thumb-window"><img src="images/future_1.jpg"></div>
 <div class="thumb-window"><img src="images/future_2.jpg"></div>
 <div class="thumb-window"><img src="images/future_3.jpg"></div>
@@ -199,21 +224,21 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 <script>
 gsap.registerPlugin(ScrollTrigger);
 gsap.utils.toArray(".fade-section").forEach(sec => {
-gsap.to(sec, { scrollTrigger: { trigger: sec, start: "top 85%" }, opacity: 1, y: 0, duration: 1 });
+gsap.to(sec, { scrollTrigger: { trigger: sec, start: "top 85%" }, opacity: 1, y: 0, duration: 1.5, ease: "power2.out" });
 });
 
 const canvas = document.getElementById("heartCanvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth; canvas.height = window.innerHeight;
 let hearts = [];
-for(let i=0; i<25; i++){
-hearts.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, size: Math.random()*6+3, speed: Math.random()*0.3+0.1 });
+for(let i=0; i<30; i++){
+hearts.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, size: Math.random()*8+4, speed: Math.random()*0.4+0.1 });
 }
 function drawHeart(x, y, size) {
 ctx.beginPath(); ctx.moveTo(x, y);
 ctx.bezierCurveTo(x-size/2, y-size/2, x-size, y+size/3, x, y+size);
 ctx.bezierCurveTo(x+size, y+size/3, x+size/2, y-size/2, x, y);
-ctx.fillStyle = "rgba(255, 182, 193, 0.3)"; ctx.fill();
+ctx.fillStyle = "rgba(252, 246, 186, 0.2)"; ctx.fill();
 }
 function animate() {
 ctx.clearRect(0, 0, canvas.width, canvas.height);
