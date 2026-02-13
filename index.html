@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ramya ❤️ Yuvaraj</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/MotionPathPlugin.min.js"></script>
+
+<style>
+body {
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background: radial-gradient(circle at center, #0b1a3a, #050d1f);
+  color:white;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
+
+/* Intro */
+.intro {
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.title {
+  font-size:3rem;
+  opacity:0;
+}
+
+.subtitle {
+  font-size:1.2rem;
+  opacity:0;
+  margin-top:20px;
+}
+
+/* Timeline */
+.timeline {
+  padding:100px 20px;
+  text-align:center;
+}
+
+.moment {
+  margin:150px 0;
+  font-size:1.6rem;
+  opacity:0;
+  transform:translateY(60px);
+}
+
+/* Temple Aura */
+.temple-section {
+  position:relative;
+  height:400px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.temple-aura {
+  position:absolute;
+  width:300px;
+  height:300px;
+  background: radial-gradient(circle, rgba(255,215,0,0.6), transparent 70%);
+  border-radius:50%;
+  animation:aura 4s infinite ease-in-out;
+  z-index:-1;
+}
+
+@keyframes aura {
+  0%,100% {transform: scale(1); opacity:0.6;}
+  50% {transform: scale(1.2); opacity:1;}
+}
+
+/* Flight */
+#flightSVG {
+  width:100%;
+  height:200px;
+  margin-top:50px;
+}
+
+/* Runner */
+.runner-container {
+  position:fixed;
+  bottom:30px;
+  left:0;
+  width:100%;
+  pointer-events:none;
+}
+
+.runner {
+  width:80px;
+  position:absolute;
+  left:0;
+}
+
+/* Couple */
+.couple {
+  height:300px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:2rem;
+  background: radial-gradient(circle, gold 10%, transparent 60%);
+  opacity:0;
+}
+
+/* Countdown */
+.countdown {
+  text-align:center;
+  padding:100px;
+  font-size:2rem;
+}
+</style>
+</head>
+
+<body>
+
+<section class="intro">
+  <h1 class="title">Ramya ❤️ Yuvaraj</h1>
+  <div class="subtitle">A Cinematic Love Journey</div>
+</section>
+
+<section class="timeline">
+  <div class="moment">✨ First Conversation</div>
+  <div class="moment">🌸 First Smile</div>
+  <div class="moment">💖 The Proposal</div>
+</section>
+
+<section class="temple-section">
+  <div class="temple-aura"></div>
+  <h2>🛕 Divine Blessings</h2>
+</section>
+
+<svg id="flightSVG" viewBox="0 0 1000 200">
+  <path id="flightPath" d="M0,100 C300,0 700,200 1000,100" stroke="transparent" fill="none"/>
+  <circle id="heartFly" r="10" fill="red"/>
+</svg>
+
+<div class="runner-container">
+  <img class="runner" src="https://cdn-icons-png.flaticon.com/512/1995/1995474.png"/>
+</div>
+
+<section class="couple">
+  💍 Forever Begins Here 💍
+</section>
+
+<section class="countdown" id="countdown">
+  Countdown to Wedding...
+</section>
+
+<script>
+gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+
+/* Intro Animation */
+gsap.to(".title", {opacity:1, y:-20, duration:2});
+gsap.to(".subtitle", {opacity:1, delay:1, duration:2});
+
+/* Timeline Scroll Reveal */
+gsap.utils.toArray(".moment").forEach(moment=>{
+  gsap.to(moment,{
+    scrollTrigger:{
+      trigger:moment,
+      start:"top 80%"
+    },
+    opacity:1,
+    y:0,
+    duration:1.5
+  });
+});
+
+/* Flying Heart */
+gsap.to("#heartFly",{
+  duration:5,
+  repeat:-1,
+  ease:"none",
+  motionPath:{
+    path:"#flightPath",
+    align:"#flightPath",
+    autoRotate:true
+  }
+});
+
+/* Runner Animation */
+gsap.to(".runner",{
+  x:window.innerWidth,
+  duration:8,
+  repeat:-1,
+  ease:"linear"
+});
+
+/* Couple Reveal */
+gsap.to(".couple",{
+  scrollTrigger:{
+    trigger:".couple",
+    start:"top 80%"
+  },
+  opacity:1,
+  duration:2
+});
+
+/* Countdown */
+const targetDate = new Date("2026-12-31").getTime();
+setInterval(()=>{
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+  const days = Math.floor(distance/(1000*60*60*24));
+  document.getElementById("countdown").innerHTML =
+    "Wedding in " + days + " days ❤️";
+},1000);
+</script>
+
+</body>
+</html>
