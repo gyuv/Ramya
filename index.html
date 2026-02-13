@@ -6,7 +6,6 @@
 <title>Yuvaraj ❤️ Ramya | Our Story</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
 
@@ -27,21 +26,13 @@ background: radial-gradient(circle at 50% 30%, #162447, #050816 70%);
 z-index: -3;
 }
 
-.depth {
-position: fixed;
-width: 120%;
-height: 120%;
-background: radial-gradient(circle, rgba(255, 215, 0, 0.08), transparent 60%);
-z-index: -2;
-}
-
 section {
 min-height: 100vh;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-padding: 100px 20px;
+padding: 60px 20px;
 text-align: center;
 }
 
@@ -51,261 +42,182 @@ background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #bf953
 -webkit-text-fill-color: transparent;
 background-size: 200% auto;
 animation: shimmer 4s linear infinite;
-filter: drop-shadow(0 0 10px rgba(191, 149, 63, 0.3));
 }
 
-@keyframes shimmer {
-to { background-position: 200% center; }
-}
+@keyframes shimmer { to { background-position: 200% center; } }
 
-.glow-soft {
-text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-}
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 3.5rem); margin-bottom: 10px; }
+h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 15px; color: #fcf6ba; }
+p { max-width: 700px; font-size: 1.05rem; line-height: 1.6; opacity: 0.85; margin-bottom: 30px; }
 
-h1 {
-font-family: 'Playfair Display', serif;
-font-size: clamp(2.5rem, 8vw, 4.5rem);
-margin-bottom: 20px;
-letter-spacing: 2px;
-}
-
-h2 {
-font-family: 'Playfair Display', serif;
-font-size: 2.8rem;
-margin-bottom: 30px;
-color: #fcf6ba;
-}
-
-p {
-max-width: 850px;
-font-size: 1.15rem;
-line-height: 2.2;
-opacity: 0.85;
-}
-
-/* Image Cluster - Original Size Display */
-.image-cluster {
-margin-top: 60px;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 30px;
+/* THE GALLERY GRID - UNIFORM THUMBNAILS */
+.gallery-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 20px;
 width: 100%;
+max-width: 900px;
+margin: 0 auto;
 }
 
-.image-cluster img {
-max-width: 90%; 
-height: auto; 
-border-radius: 15px;
-box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+.thumb-window {
+aspect-ratio: 1 / 1; /* Makes every window a perfect square */
+background: rgba(255, 255, 255, 0.05);
+border: 1px solid rgba(255, 215, 0, 0.1);
+border-radius: 12px;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+transition: all 0.4s ease;
+padding: 10px; /* Space between image and window border */
 }
 
-.image-cluster img:hover {
-transform: scale(1.03);
-z-index: 10;
+.thumb-window img {
+max-width: 100%;
+max-height: 100%;
+object-fit: contain; /* NO CROPPING - Full image fits inside */
+border-radius: 4px;
 }
 
-.intro-content {
-opacity: 0;
-transform: translateY(30px);
+.thumb-window:hover {
+transform: translateY(-10px);
+background: rgba(255, 255, 255, 0.1);
+border-color: #bf953f;
+box-shadow: 0 15px 30px rgba(0,0,0,0.5);
 }
 
-.fade-section {
-opacity: 0;
-transform: translateY(80px);
-}
-
-canvas {
-position: fixed;
-top: 0;
-left: 0;
-pointer-events: none;
-z-index: -1;
-}
-
-audio {
-display: none;
-}
+.fade-section { opacity: 0; transform: translateY(30px); }
+canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 </style>
 </head>
 
 <body>
 
 <div class="bg"></div>
-<div class="depth" id="depthLayer"></div>
 <canvas id="heartCanvas"></canvas>
 
 <audio id="bgMusic" loop>
 <source src="audio/background_music.mp3" type="audio/mpeg">
 </audio>
 
-<section id="intro">
-<div class="intro-content">
+<section>
 <h1 class="gold-text">Yuvaraj ❤️ Ramya</h1>
-<p class="glow-soft">
-A journey that began with a plate of biriyani...<br>
-And ended with me losing my heart and peace to you forever.
-</p>
-</div>
+<p>In Search of Biriyani... I Just Lost My Heart & Peace to you my love.</p>
 </section>
 
 <section class="fade-section">
 <h2>The Flavor of First Sight</h2>
-<p>
-I walked into that wedding for the food counter.<br>
-But amidst the steam of the biriyani, my eyes caught yours.
-</p>
-<div class="image-cluster">
-<img src="images/biriyani_1.jpg">
-<img src="images/biriyani_2.jpg">
-<img src="images/biriyani_3.jpg">
+<p>I walked into that wedding for the food... but I left with your image in my heart.</p>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/biriyani_1.jpg"></div>
+<div class="thumb-window"><img src="images/biriyani_2.jpg"></div>
+<div class="thumb-window"><img src="images/biriyani_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
 <h2>A Spark in a Question</h2>
-<p>
-“Where did you get your tattoo?”<br>
-One simple question, one confident smile. Infinity began there.
-</p>
-<div class="image-cluster">
-<img src="images/tattoo_1.jpg">
-<img src="images/tattoo_2.jpg">
-<img src="images/tattoo_3.jpg">
+<p>“Where did you get your tattoo?” One question, infinity answers.</p>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/tattoo_1.jpg"></div>
+<div class="thumb-window"><img src="images/tattoo_2.jpg"></div>
+<div class="thumb-window"><img src="images/tattoo_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
-<h2>Digital Echoes & 3 AM Hearts</h2>
-<p>
-Casual story replies turned into paragraphs. <br>
-The blue glow of Instagram became our little sanctuary.
-</p>
-<div class="image-cluster">
-<img src="images/instagram_1.jpg">
-<img src="images/instagram_2.jpg">
-<img src="images/instagram_3.jpg">
+<h2>Digital Echoes</h2>
+<p>The blue glow of Instagram was where our hearts first started talking.</p>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/instagram_1.jpg"></div>
+<div class="thumb-window"><img src="images/instagram_2.jpg"></div>
+<div class="thumb-window"><img src="images/instagram_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
-<h2>The Beauty of Stolen Seconds</h2>
-<p>
-College side-gaps and hidden corners.<br>
-Hand touches that weren't accidental at all.
-</p>
-<div class="image-cluster">
-<img src="images/college_1.jpg">
-<img src="images/college_2.jpg">
-<img src="images/college_3.jpg">
+<h2>Stolen Seconds</h2>
+<p>College side-gaps and hidden corners. Every glance was a secret promise.</p>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/college_1.jpg"></div>
+<div class="thumb-window"><img src="images/college_2.jpg"></div>
+<div class="thumb-window"><img src="images/college_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
-<h2 class="gold-text">When Time Stood Still</h2>
-<p>
-No texts. No calls. Just neighbors as messengers.<br>
-The mission of hijacking grandmother’s phone just to hear your voice.
-</p>
-<div class="image-cluster">
-<img src="images/storm_1.jpg">
-<img src="images/storm_2.jpg">
-<img src="images/storm_3.jpg">
+<h2 class="gold-text">The Silent Storm</h2>
+<p>Communication was cut, but our hearts stayed loud. Hijacking phones and secret messages.</p>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/storm_1.jpg"></div>
+<div class="thumb-window"><img src="images/storm_2.jpg"></div>
+<div class="thumb-window"><img src="images/storm_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
-<h2>29 August 2026 — The Vow</h2>
-<p>
-7:00 AM. Temple bells and sacred promises.<br>
-That day, you became my forever.
-</p>
-<div class="image-cluster">
-<img src="images/wedding_1.jpg">
-<img src="images/wedding_2.jpg">
-<img src="images/wedding_3.jpg">
+<h2>The Vow — 29 August 2026</h2>
+<p>Under the temple bells, our forever officially began.</p>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/wedding_1.jpg"></div>
+<div class="thumb-window"><img src="images/wedding_2.jpg"></div>
+<div class="thumb-window"><img src="images/wedding_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
-<h2>Across Borders, Hand in Hand</h2>
-<p>
-Malaysia to Bali. Waking up in a foreign land,<br>
-realizing home is wherever you are.
-</p>
-<div class="image-cluster">
-<img src="images/honeymoon_1.jpg">
-<img src="images/honeymoon_2.jpg">
-<img src="images/honeymoon_3.jpg">
+<h2>Across Borders</h2>
+<p>From Malaysia to Bali. Home is whenever I am with you.</p>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/honeymoon_1.jpg"></div>
+<div class="thumb-window"><img src="images/honeymoon_2.jpg"></div>
+<div class="thumb-window"><img src="images/honeymoon_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
-<h2>The Chaos We Call Home</h2>
-<p>
-Mood swings, jealousy, and stubbornness.<br>
-Inside jokes and silent understanding. This is real magic.
-</p>
-<div class="image-cluster">
-<img src="images/everyday_1.jpg">
-<img src="images/everyday_2.jpg">
-<img src="images/everyday_3.jpg">
+<h2>The Real Magic</h2>
+<p>The chaos, the jealousy, and the love. Our beautiful everyday life.</p>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/everyday_1.jpg"></div>
+<div class="thumb-window"><img src="images/everyday_2.jpg"></div>
+<div class="thumb-window"><img src="images/everyday_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
 <h2 class="gold-text">To Infinity & Beyond</h2>
-<p>
-This is just the prologue.<br>
-<strong>I love you, Ramya. Always.</strong>
-</p>
-<div class="image-cluster">
-<img src="images/future_1.jpg">
-<img src="images/future_2.jpg">
-<img src="images/future_3.jpg">
+<p>I love you, Ramya. Always.</p>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/future_1.jpg"></div>
+<div class="thumb-window"><img src="images/future_2.jpg"></div>
+<div class="thumb-window"><img src="images/future_3.jpg"></div>
 </div>
 </section>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
-
-window.addEventListener('load', () => {
-const tl = gsap.timeline();
-tl.to(".intro-content", { opacity: 1, y: 0, duration: 2.5, ease: "power4.out" });
-tl.from(".gold-text", { backgroundPosition: "200% center", duration: 2, ease: "power2.inOut" }, "-=1.5");
-});
-
 gsap.utils.toArray(".fade-section").forEach(sec => {
-gsap.to(sec, {
-scrollTrigger: { trigger: sec, start: "top 85%", toggleActions: "play none none none" },
-opacity: 1, y: 0, duration: 1.8, ease: "power3.out"
-});
+gsap.to(sec, { scrollTrigger: { trigger: sec, start: "top 85%" }, opacity: 1, y: 0, duration: 1 });
 });
 
 const canvas = document.getElementById("heartCanvas");
 const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
 let hearts = [];
-for(let i=0; i<45; i++){
-hearts.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 12 + 6, speed: Math.random() * 0.4 + 0.2, opacity: Math.random() * 0.5 + 0.2 });
+for(let i=0; i<25; i++){
+hearts.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, size: Math.random()*6+3, speed: Math.random()*0.3+0.1 });
 }
-function drawHeart(x, y, size, opacity) {
-ctx.beginPath();
-ctx.moveTo(x, y);
-ctx.bezierCurveTo(x - size/2, y - size/2, x - size, y + size/3, x, y + size);
-ctx.bezierCurveTo(x + size, y + size/3, x + size/2, y - size/2, x, y);
-ctx.fillStyle = `rgba(255, 120, 160, ${opacity})`;
-ctx.fill();
+function drawHeart(x, y, size) {
+ctx.beginPath(); ctx.moveTo(x, y);
+ctx.bezierCurveTo(x-size/2, y-size/2, x-size, y+size/3, x, y+size);
+ctx.bezierCurveTo(x+size, y+size/3, x+size/2, y-size/2, x, y);
+ctx.fillStyle = "rgba(255, 182, 193, 0.3)"; ctx.fill();
 }
 function animate() {
 ctx.clearRect(0, 0, canvas.width, canvas.height);
-hearts.forEach(h => {
-drawHeart(h.x, h.y, h.size, h.opacity);
-h.y += h.speed;
-if(h.y > canvas.height) h.y = -20;
-});
+hearts.forEach(h => { drawHeart(h.x, h.y, h.size); h.y += h.speed; if(h.y > canvas.height) h.y = -20; });
 requestAnimationFrame(animate);
 }
 animate();
