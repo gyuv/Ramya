@@ -6,7 +6,6 @@
 <title>Yuvaraj ❤️ Ramya | Our Story</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
 
@@ -33,7 +32,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-padding: 80px 20px;
+padding: 60px 20px;
 text-align: center;
 }
 
@@ -45,48 +44,47 @@ background-size: 200% auto;
 animation: shimmer 4s linear infinite;
 }
 
-@keyframes shimmer {
-to { background-position: 200% center; }
-}
+@keyframes shimmer { to { background-position: 200% center; } }
 
-h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 10px; }
-h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; color: #fcf6ba; }
-p { max-width: 800px; font-size: 1.1rem; line-height: 1.8; opacity: 0.9; margin-bottom: 40px; }
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 3.5rem); margin-bottom: 10px; }
+h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 15px; color: #fcf6ba; }
+p { max-width: 700px; font-size: 1.05rem; line-height: 1.6; opacity: 0.85; margin-bottom: 30px; }
 
-/* UNIFORM CLUSTER - NO CROPPING */
-.image-cluster {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
+/* THE GALLERY GRID - UNIFORM THUMBNAILS */
+.gallery-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 gap: 20px;
 width: 100%;
-max-width: 1200px;
+max-width: 900px;
+margin: 0 auto;
 }
 
-/* The "Box" that holds the image */
-.img-container {
-width: 320px; /* Fixed width for the cluster look */
-height: 320px; /* Fixed height for the cluster look */
+.thumb-window {
+aspect-ratio: 1 / 1; /* Makes every window a perfect square */
+background: rgba(255, 255, 255, 0.05);
+border: 1px solid rgba(255, 215, 0, 0.1);
+border-radius: 12px;
 display: flex;
 justify-content: center;
 align-items: center;
-background: rgba(255, 255, 255, 0.03); /* Subtle background for empty spaces */
-border-radius: 15px;
 overflow: hidden;
-box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-transition: transform 0.4s ease;
+transition: all 0.4s ease;
+padding: 10px; /* Space between image and window border */
 }
 
-.img-container img {
+.thumb-window img {
 max-width: 100%;
 max-height: 100%;
-object-fit: contain; /* THE SECRET: No cropping, shows full image */
-display: block;
+object-fit: contain; /* NO CROPPING - Full image fits inside */
+border-radius: 4px;
 }
 
-.img-container:hover {
-transform: scale(1.05);
-background: rgba(255, 255, 255, 0.07);
+.thumb-window:hover {
+transform: translateY(-10px);
+background: rgba(255, 255, 255, 0.1);
+border-color: #bf953f;
+box-shadow: 0 15px 30px rgba(0,0,0,0.5);
 }
 
 .fade-section { opacity: 0; transform: translateY(30px); }
@@ -105,110 +103,111 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 
 <section>
 <h1 class="gold-text">Yuvaraj ❤️ Ramya</h1>
-<p>In Search of Biriyani.... I Just Lost My Heart & Peace to you my love....</p>
+<p>In Search of Biriyani... I Just Lost My Heart & Peace to you my love.</p>
 </section>
 
 <section class="fade-section">
 <h2>The Flavor of First Sight</h2>
-<p>I walked into that wedding for the food... but I left with you in my heart.</p>
-<div class="image-cluster">
-<div class="img-container"><img src="images/biriyani_1.jpg"></div>
-<div class="img-container"><img src="images/biriyani_2.jpg"></div>
-<div class="img-container"><img src="images/biriyani_3.jpg"></div>
+<p>I walked into that wedding for the food... but I left with your image in my heart.</p>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/biriyani_1.jpg"></div>
+<div class="thumb-window"><img src="images/biriyani_2.jpg"></div>
+<div class="thumb-window"><img src="images/biriyani_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
 <h2>A Spark in a Question</h2>
 <p>“Where did you get your tattoo?” One question, infinity answers.</p>
-<div class="image-cluster">
-<div class="img-container"><img src="images/tattoo_1.jpg"></div>
-<div class="img-container"><img src="images/tattoo_2.jpg"></div>
-<div class="img-container"><img src="images/tattoo_3.jpg"></div>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/tattoo_1.jpg"></div>
+<div class="thumb-window"><img src="images/tattoo_2.jpg"></div>
+<div class="thumb-window"><img src="images/tattoo_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
 <h2>Digital Echoes</h2>
-<p>Late night story replies that turned into our own private world.</p>
-<div class="image-cluster">
-<div class="img-container"><img src="images/instagram_1.jpg"></div>
-<div class="img-container"><img src="images/instagram_2.jpg"></div>
-<div class="img-container"><img src="images/instagram_3.jpg"></div>
+<p>The blue glow of Instagram was where our hearts first started talking.</p>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/instagram_1.jpg"></div>
+<div class="thumb-window"><img src="images/instagram_2.jpg"></div>
+<div class="thumb-window"><img src="images/instagram_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
 <h2>Stolen Seconds</h2>
-<p>College side-gaps and hidden corners. Every glance was a promise.</p>
-<div class="image-cluster">
-<div class="img-container"><img src="images/college_1.jpg"></div>
-<div class="img-container"><img src="images/college_2.jpg"></div>
-<div class="img-container"><img src="images/college_3.jpg"></div>
+<p>College side-gaps and hidden corners. Every glance was a secret promise.</p>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/college_1.jpg"></div>
+<div class="thumb-window"><img src="images/college_2.jpg"></div>
+<div class="thumb-window"><img src="images/college_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
 <h2 class="gold-text">The Silent Storm</h2>
 <p>Communication was cut, but our hearts stayed loud. Hijacking phones and secret messages.</p>
-<div class="image-cluster">
-<div class="img-container"><img src="images/storm_1.jpg"></div>
-<div class="img-container"><img src="images/storm_2.jpg"></div>
-<div class="img-container"><img src="images/storm_3.jpg"></div>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/storm_1.jpg"></div>
+<div class="thumb-window"><img src="images/storm_2.jpg"></div>
+<div class="thumb-window"><img src="images/storm_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
 <h2>The Vow — 29 August 2026</h2>
 <p>Under the temple bells, our forever officially began.</p>
-<div class="image-cluster">
-<div class="img-container"><img src="images/wedding_1.jpg"></div>
-<div class="img-container"><img src="images/wedding_2.jpg"></div>
-<div class="img-container"><img src="images/wedding_3.jpg"></div>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/wedding_1.jpg"></div>
+<div class="thumb-window"><img src="images/wedding_2.jpg"></div>
+<div class="thumb-window"><img src="images/wedding_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
 <h2>Across Borders</h2>
 <p>From Malaysia to Bali. Home is whenever I am with you.</p>
-<div class="image-cluster">
-<div class="img-container"><img src="images/honeymoon_1.jpg"></div>
-<div class="img-container"><img src="images/honeymoon_2.jpg"></div>
-<div class="img-container"><img src="images/honeymoon_3.jpg"></div>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/honeymoon_1.jpg"></div>
+<div class="thumb-window"><img src="images/honeymoon_2.jpg"></div>
+<div class="thumb-window"><img src="images/honeymoon_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
 <h2>The Real Magic</h2>
 <p>The chaos, the jealousy, and the love. Our beautiful everyday life.</p>
-<div class="image-cluster">
-<div class="img-container"><img src="images/everyday_1.jpg"></div>
-<div class="img-container"><img src="images/everyday_2.jpg"></div>
-<div class="img-container"><img src="images/everyday_3.jpg"></div>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/everyday_1.jpg"></div>
+<div class="thumb-window"><img src="images/everyday_2.jpg"></div>
+<div class="thumb-window"><img src="images/everyday_3.jpg"></div>
 </div>
 </section>
 
 <section class="fade-section">
 <h2 class="gold-text">To Infinity & Beyond</h2>
 <p>I love you, Ramya. Always.</p>
-<div class="image-cluster">
-<div class="img-container"><img src="images/future_1.jpg"></div>
-<div class="img-container"><img src="images/future_2.jpg"></div>
-<div class="img-container"><img src="images/future_3.jpg"></div>
+<div class="gallery-grid">
+<div class="thumb-window"><img src="images/future_1.jpg"></div>
+<div class="thumb-window"><img src="images/future_2.jpg"></div>
+<div class="thumb-window"><img src="images/future_3.jpg"></div>
 </div>
 </section>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
 gsap.utils.toArray(".fade-section").forEach(sec => {
-gsap.to(sec, { scrollTrigger: { trigger: sec, start: "top 85%" }, opacity: 1, y: 0, duration: 1.2 });
+gsap.to(sec, { scrollTrigger: { trigger: sec, start: "top 85%" }, opacity: 1, y: 0, duration: 1 });
 });
+
 const canvas = document.getElementById("heartCanvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth; canvas.height = window.innerHeight;
 let hearts = [];
-for(let i=0; i<30; i++){
-hearts.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, size: Math.random()*8+4, speed: Math.random()*0.4+0.1 });
+for(let i=0; i<25; i++){
+hearts.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, size: Math.random()*6+3, speed: Math.random()*0.3+0.1 });
 }
 function drawHeart(x, y, size) {
 ctx.beginPath(); ctx.moveTo(x, y);
@@ -222,6 +221,7 @@ hearts.forEach(h => { drawHeart(h.x, h.y, h.size); h.y += h.speed; if(h.y > canv
 requestAnimationFrame(animate);
 }
 animate();
+
 window.addEventListener('click', () => {
 const audio = document.getElementById('bgMusic');
 if(audio.paused) audio.play();
