@@ -3,255 +3,583 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yuvaraj ❤️ Ramya | Our Eternal Story</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
-
+<title>Yuvaraj ❤️ Ramya — Our Eternal Story</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&family=Lato:wght@100;300;400&display=swap" rel="stylesheet">
 <style>
-body {
-margin: 0;
-background: #050816;
-color: white;
-font-family: 'Poppins', sans-serif;
-overflow-x: hidden;
+:root {
+  --gold:#c9a84c; --gold-l:#f0d080; --gold-p:#fcf6ba;
+  --rose:#e8345a; --rose2:#ff6b8a; --crimson:#8b1a2c;
+  --ink:#05050f; --deep:#0c0c1e; --mid:#131328;
+  --text:rgba(255,255,255,0.9); --dim:rgba(255,255,255,0.5);
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--text);font-family:'Lato',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
 
-.bg {
-position: fixed;
-width: 100%;
-height: 100vh;
-background: radial-gradient(circle at 50% 30%, #162447, #050816 70%);
-z-index: -3;
+/* CURSOR */
+#cur{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--rose);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s;mix-blend-mode:screen;}
+#cur-r{position:fixed;width:36px;height:36px;border:1px solid rgba(201,168,76,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s ease-out,top .12s ease-out,width .3s,height .3s;}
+
+/* CANVASES */
+#bgCanvas{position:fixed;inset:0;z-index:-4;pointer-events:none;}
+#petalCanvas{position:fixed;inset:0;z-index:2;pointer-events:none;}
+#sparkCanvas{position:fixed;inset:0;z-index:3;pointer-events:none;}
+
+/* NOISE */
+body::after{content:'';position:fixed;inset:0;z-index:1;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;}
+
+/* LOADER */
+#loader{position:fixed;inset:0;z-index:9990;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 1.2s,visibility 1.2s;}
+#loader.out{opacity:0;visibility:hidden;}
+.ld-ring{width:80px;height:80px;border-radius:50%;border:1px solid rgba(201,168,76,.15);border-top-color:var(--gold);animation:spin 1.4s linear infinite;}
+.ld-h{position:absolute;font-size:2rem;animation:lph 1.4s ease-in-out infinite;}
+.ld-t{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.5em;color:var(--gold);margin-top:24px;opacity:.7;}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes lph{0%,100%{transform:scale(.8);}50%{transform:scale(1.2);}}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:2px;z-index:100;background:linear-gradient(90deg,var(--crimson),var(--gold),var(--rose));width:0;transition:width .08s;}
+
+/* SECTIONS */
+section{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:110px 28px;text-align:center;overflow:hidden;}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(55px);transition:opacity 1.3s cubic-bezier(.16,1,.3,1),transform 1.3s cubic-bezier(.16,1,.3,1);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.15s;}.d2{transition-delay:.3s;}.d3{transition-delay:.45s;}.d4{transition-delay:.6s;}
+
+/* GOLD TEXT */
+.gold{background:linear-gradient(135deg,#7a5a10,#c9a84c 30%,#f8e87c 50%,#c9a84c 70%,#7a5a10);background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shim 5s ease infinite;}
+@keyframes shim{0%{background-position:0% 50%;}100%{background-position:300% 50%;}}
+
+/* TYPOGRAPHY */
+.lbl{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.55em;color:var(--gold);display:flex;align-items:center;gap:16px;margin-bottom:16px;}
+.lbl::before,.lbl::after{content:'';height:1px;width:40px;background:linear-gradient(to right,transparent,var(--gold));}
+.lbl::after{background:linear-gradient(to left,transparent,var(--gold));}
+.dtag{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.35em;color:var(--rose2);margin-bottom:22px;}
+h2.st{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5.5vw,3.8rem);font-weight:300;line-height:1.2;margin-bottom:18px;max-width:820px;}
+.body-p{font-size:clamp(.9rem,1.4vw,1.1rem);line-height:2;max-width:760px;color:rgba(255,255,255,.68);margin-bottom:60px;letter-spacing:.3px;}
+
+/* GLOW BLOBS */
+.blob{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:-1;}
+
+/* ═══ IMAGE LAYOUTS ═══ */
+
+/* TRIPTYCH */
+.triptych{display:flex;gap:16px;justify-content:center;align-items:flex-end;flex-wrap:wrap;max-width:1140px;width:100%;}
+.triptych .ic{position:relative;overflow:hidden;border-radius:6px;flex-shrink:0;cursor:pointer;border:1px solid rgba(201,168,76,.12);box-shadow:0 20px 60px rgba(0,0,0,.7);transition:transform .7s cubic-bezier(.16,1,.3,1),box-shadow .5s,border-color .4s;}
+.triptych .ic.tall{width:240px;height:360px;}
+.triptych .ic.mid{width:240px;height:300px;}
+.triptych .ic.short{width:240px;height:260px;}
+.triptych .ic:hover{transform:translateY(-16px) scale(1.015);border-color:rgba(201,168,76,.45);box-shadow:0 40px 100px rgba(0,0,0,.85),0 0 40px rgba(232,52,90,.14);}
+.triptych .ic img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s;filter:brightness(.9) saturate(1.1);}
+.triptych .ic:hover img{transform:scale(1.07);filter:brightness(1.05) saturate(1.35);}
+
+/* SPREAD: 1 large + 2 stacked */
+.spread{display:flex;gap:16px;justify-content:center;align-items:stretch;max-width:1100px;width:100%;flex-wrap:wrap;}
+.spread .feat{position:relative;width:480px;height:480px;border-radius:6px;overflow:hidden;flex-shrink:0;cursor:pointer;border:1px solid rgba(201,168,76,.12);box-shadow:0 20px 60px rgba(0,0,0,.7);transition:transform .7s cubic-bezier(.16,1,.3,1),box-shadow .5s,border-color .4s;}
+.spread .feat:hover{transform:translateY(-12px) scale(1.01);border-color:rgba(201,168,76,.45);box-shadow:0 40px 100px rgba(0,0,0,.85),0 0 50px rgba(232,52,90,.18);}
+.spread .feat img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s;filter:brightness(.9) saturate(1.15);}
+.spread .feat:hover img{transform:scale(1.06);filter:brightness(1.05) saturate(1.3);}
+.spread .stack{display:flex;flex-direction:column;gap:16px;flex-shrink:0;}
+.sic{position:relative;width:280px;height:232px;border-radius:6px;overflow:hidden;cursor:pointer;border:1px solid rgba(201,168,76,.12);box-shadow:0 16px 50px rgba(0,0,0,.7);transition:transform .7s cubic-bezier(.16,1,.3,1),box-shadow .5s,border-color .4s;}
+.sic:hover{transform:translateX(10px) scale(1.02);border-color:rgba(201,168,76,.45);box-shadow:0 30px 80px rgba(0,0,0,.85),0 0 30px rgba(232,52,90,.12);}
+.sic img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s;filter:brightness(.9) saturate(1.1);}
+.sic:hover img{transform:scale(1.07);filter:brightness(1.05) saturate(1.3);}
+
+/* PANORAMA */
+.pano{display:flex;flex-direction:column;gap:16px;align-items:center;max-width:1100px;width:100%;}
+.pano .wide{position:relative;width:100%;height:380px;border-radius:6px;overflow:hidden;cursor:pointer;border:1px solid rgba(201,168,76,.12);box-shadow:0 20px 60px rgba(0,0,0,.7);transition:transform .7s,box-shadow .5s,border-color .4s;}
+.pano .wide:hover{transform:translateY(-10px);border-color:rgba(201,168,76,.4);box-shadow:0 40px 100px rgba(0,0,0,.85),0 0 60px rgba(201,168,76,.1);}
+.pano .wide img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s;filter:brightness(.88) saturate(1.15);}
+.pano .wide:hover img{transform:scale(1.04);filter:brightness(1.05) saturate(1.3);}
+.pano .pair{display:flex;gap:16px;width:100%;}
+.pic{position:relative;flex:1;height:280px;border-radius:6px;overflow:hidden;cursor:pointer;border:1px solid rgba(201,168,76,.12);box-shadow:0 16px 50px rgba(0,0,0,.7);transition:transform .7s,box-shadow .5s,border-color .4s;}
+.pic:hover{transform:translateY(-12px);border-color:rgba(201,168,76,.4);box-shadow:0 35px 90px rgba(0,0,0,.85),0 0 40px rgba(232,52,90,.1);}
+.pic img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s;filter:brightness(.9) saturate(1.1);}
+.pic:hover img{transform:scale(1.08);filter:brightness(1.05) saturate(1.3);}
+
+/* OVERLAY + SHINE on all cards */
+.ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,15,.72),transparent 55%);pointer-events:none;}
+.sh{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.055),transparent 50%);pointer-events:none;z-index:1;}
+
+/* DIAMOND GRID */
+.diamond-grid{display:flex;gap:40px;justify-content:center;align-items:center;flex-wrap:wrap;max-width:1100px;width:100%;padding:40px 0;}
+.dc{position:relative;width:220px;height:220px;transform:rotate(-3deg);border-radius:6px;overflow:hidden;cursor:pointer;border:1px solid rgba(201,168,76,.15);box-shadow:0 20px 60px rgba(0,0,0,.8);transition:transform .7s cubic-bezier(.16,1,.3,1),box-shadow .5s,border-color .4s;}
+.dc:nth-child(2){transform:rotate(3deg) translateY(-20px);}
+.dc:nth-child(3){transform:rotate(-2deg);}
+.dc:hover{transform:rotate(0deg) scale(1.08) translateY(-15px)!important;border-color:rgba(201,168,76,.5);box-shadow:0 40px 100px rgba(0,0,0,.85),0 0 50px rgba(232,52,90,.2);}
+.dc img{width:100%;height:100%;object-fit:cover;transition:transform .8s,filter .5s;filter:brightness(.88) saturate(1.2);}
+.dc:hover img{transform:scale(1.1);filter:brightness(1.08) saturate(1.4);}
+
+/* WEDDING GALLERY */
+.wg{display:flex;flex-direction:column;gap:20px;align-items:center;max-width:980px;width:100%;}
+.wg-top{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
+.wc{position:relative;border-radius:4px;overflow:hidden;cursor:pointer;border:1px solid rgba(201,168,76,.18);box-shadow:0 20px 70px rgba(0,0,0,.8);transition:transform .7s cubic-bezier(.16,1,.3,1),box-shadow .5s,border-color .4s;}
+.wc.lg{width:320px;height:400px;}.wc.sm{width:220px;height:400px;}
+.wc:hover{transform:translateY(-14px) scale(1.01);border-color:rgba(201,168,76,.5);box-shadow:0 40px 100px rgba(0,0,0,.9),0 0 50px rgba(201,168,76,.15);}
+.wc img,.ww img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s;filter:brightness(.88) saturate(1.15);}
+.wc:hover img{transform:scale(1.06);filter:brightness(1.05) saturate(1.3);}
+.gb{position:absolute;inset:6px;border:1px solid rgba(201,168,76,.25);border-radius:3px;pointer-events:none;z-index:2;transition:border-color .4s;}
+.wc:hover .gb{border-color:rgba(201,168,76,.7);box-shadow:inset 0 0 20px rgba(201,168,76,.08);}
+.ww{position:relative;width:100%;max-width:760px;height:260px;border-radius:4px;overflow:hidden;cursor:pointer;border:1px solid rgba(201,168,76,.18);box-shadow:0 20px 70px rgba(0,0,0,.8);transition:transform .7s,box-shadow .5s,border-color .4s;}
+.ww:hover{transform:translateY(-8px);border-color:rgba(201,168,76,.5);box-shadow:0 40px 100px rgba(0,0,0,.9),0 0 60px rgba(201,168,76,.18);}
+.ww:hover img{transform:scale(1.04);filter:brightness(1.05) saturate(1.3);}
+.ww .gb:hover{border-color:rgba(201,168,76,.7);}
+
+/* LIGHTBOX */
+#lb{position:fixed;inset:0;background:rgba(5,5,15,.95);z-index:9980;display:none;align-items:center;justify-content:center;backdrop-filter:blur(22px);}
+#lb.open{display:flex;}
+#lb img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:6px;border:1px solid rgba(201,168,76,.3);box-shadow:0 0 100px rgba(0,0,0,.9),0 0 40px rgba(232,52,90,.1);}
+#lb-close{position:absolute;top:24px;right:32px;font-size:2.2rem;color:var(--gold);cursor:pointer;opacity:.7;transition:opacity .3s;background:none;border:none;font-family:'Cormorant Garamond',serif;}
+#lb-close:hover{opacity:1;}
+
+/* ═══ HERO ═══ */
+#hero{background:radial-gradient(ellipse 120% 90% at 50% 60%,#1a0820,var(--ink) 70%);}
+.hero-eye{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.65em;color:var(--gold);margin-bottom:36px;opacity:0;animation:fu 1.2s .3s ease forwards;}
+.hero-n{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,13vw,8.5rem);font-weight:300;line-height:.95;letter-spacing:-3px;opacity:0;animation:fu 1.2s .6s ease forwards;}
+.hero-div{width:1px;height:0;background:linear-gradient(to bottom,transparent,var(--gold) 50%,transparent);margin:36px auto;animation:el 1.5s 1.2s ease forwards;}
+.hero-q{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,2.2vw,1.4rem);color:rgba(255,255,255,.6);max-width:640px;line-height:2;opacity:0;animation:fu 1.2s 1.5s ease forwards;}
+.pr{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(139,26,44,.14) 0%,transparent 70%);animation:pr 4s ease-in-out infinite;pointer-events:none;}
+@keyframes fu{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+@keyframes el{from{height:0;}to{height:90px;}}
+@keyframes pr{0%,100%{transform:scale(.75);opacity:.4;}50%{transform:scale(1.3);opacity:1;}}
+.scroll-cta{position:absolute;bottom:36px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fu 1s 2.2s ease forwards;}
+.scroll-cta span{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.45em;color:var(--dim);}
+.sl{width:1px;height:48px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sp 2s ease-in-out infinite;}
+@keyframes sp{0%,100%{transform:scaleY(.5);opacity:.5;transform-origin:top;}50%{transform:scaleY(1);opacity:1;}}
+
+/* SECTION BGs */
+#s1{background:radial-gradient(ellipse 90% 70% at 20% 80%,rgba(80,20,10,.25),transparent 60%),var(--ink);}
+#s2{background:radial-gradient(ellipse 80% 60% at 80% 20%,rgba(55,15,80,.28),transparent 60%),var(--ink);}
+#s3{background:radial-gradient(ellipse 90% 80% at 50% 50%,rgba(15,35,90,.28),transparent 65%),var(--ink);}
+#s4{background:radial-gradient(ellipse 100% 80% at 25% 65%,rgba(90,50,10,.22),transparent 60%),var(--ink);}
+#s5{background:radial-gradient(ellipse 90% 60% at 70% 30%,rgba(80,8,25,.32),transparent 60%),var(--ink);}
+#s6{background:radial-gradient(ellipse 100% 90% at 50% 50%,rgba(120,80,8,.18),transparent 60%),radial-gradient(ellipse 60% 60% at 50% 65%,rgba(139,26,44,.2),transparent 70%),var(--ink);}
+#s7{background:radial-gradient(ellipse 100% 80% at 30% 50%,rgba(12,50,100,.22),transparent 60%),var(--ink);}
+#s8{background:radial-gradient(ellipse 80% 70% at 72% 58%,rgba(75,18,60,.22),transparent 60%),var(--ink);}
+#promise{background:radial-gradient(ellipse 110% 90% at 50% 50%,rgba(110,70,8,.22),var(--ink) 68%);}
+
+/* ORNAMENTS */
+.orn{display:flex;align-items:center;gap:14px;margin:48px auto;opacity:.5;width:fit-content;}
+.orn-l{width:100px;height:1px;background:var(--gold);}
+.orn-d{width:7px;height:7px;border:1px solid var(--gold);transform:rotate(45deg);}
+.orn-d2{width:11px;height:11px;border:1px solid var(--rose);transform:rotate(45deg);}
+.mline{width:100%;max-width:560px;height:1px;margin:44px auto;background:linear-gradient(to right,transparent,var(--gold) 30%,var(--rose) 50%,var(--gold) 70%,transparent);animation:ml 3s ease-in-out infinite;}
+@keyframes ml{0%,100%{opacity:.3;transform:scaleX(.5);}50%{opacity:1;transform:scaleX(1);}}
+
+/* DATE BANNER */
+.date-banner{position:relative;padding:10px 50px;margin-bottom:24px;display:inline-block;}
+.date-banner::before,.date-banner::after{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);transform:translateY(-50%);}
+.date-num{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6rem);font-weight:300;line-height:.9;letter-spacing:-2px;}
+
+/* LOVE LETTER */
+.letter{position:relative;max-width:700px;padding:55px 65px;border:1px solid rgba(201,168,76,.22);background:linear-gradient(135deg,rgba(201,168,76,.04),rgba(232,52,90,.03));border-radius:3px;}
+.letter::before{content:'\201C';position:absolute;top:-30px;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond',serif;font-size:8rem;color:var(--gold);opacity:.2;line-height:1;}
+.lc{position:absolute;width:18px;height:18px;border-style:solid;border-color:var(--gold);opacity:.35;}
+.lc.tl{top:-1px;left:-1px;border-width:1px 0 0 1px;}.lc.tr{top:-1px;right:-1px;border-width:1px 1px 0 0;}
+.lc.bl{bottom:-1px;left:-1px;border-width:0 0 1px 1px;}.lc.br{bottom:-1px;right:-1px;border-width:0 1px 1px 0;}
+.lt{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2vw,1.45rem);line-height:2.1;color:rgba(255,255,255,.85);}
+.ls{margin-top:36px;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);letter-spacing:.12em;}
+
+/* FOOTER */
+#footer{min-height:35vh;background:radial-gradient(ellipse at 50% 100%,rgba(139,26,44,.28),transparent 55%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:70px 28px;gap:14px;}
+.ft-h{font-size:2.8rem;animation:hb 2.2s ease-in-out infinite;}
+.ft-n{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;letter-spacing:.5em;color:var(--gold);}
+.ft-t{font-size:.62rem;letter-spacing:.38em;color:var(--dim);}
+@keyframes hb{0%,100%{transform:scale(1);}14%{transform:scale(1.28);}28%{transform:scale(1);}42%{transform:scale(1.16);}56%{transform:scale(1);}}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  .triptych .ic.tall,.triptych .ic.mid,.triptych .ic.short{width:260px;height:260px;}
+  .spread .feat{width:100%;max-width:100%;height:300px;}
+  .sic{width:100% !important;height:200px !important;}
+  .spread .stack{flex-direction:row;flex-wrap:wrap;justify-content:center;}
+  .pano .wide{height:240px;}
+  .wc.lg,.wc.sm{width:260px;height:300px;}
+  .ww{height:200px;}
+  .dc{width:190px;height:190px;}
+  .letter{padding:36px 22px;}
+  .date-banner{padding:10px 20px;}
 }
-
-section {
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-padding: 120px 24px;
-text-align: center;
-}
-
-.gold-text {
-background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #bf953f);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-size: 200% auto;
-animation: shimmer 4s linear infinite;
-}
-
-@keyframes shimmer { to { background-position: 200% center; } }
-
-h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 9vw, 5rem); margin-bottom: 25px; letter-spacing: -1px; }
-h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 30px; color: #fcf6ba; }
-
-p { 
-max-width: 1000px; 
-font-size: 1.25rem; 
-line-height: 2.2; 
-opacity: 0.9; 
-margin-bottom: 60px;
-letter-spacing: 0.3px;
-font-weight: 300;
-}
-
-.love-note-text {
-font-family: 'Playfair Display', serif;
-font-style: italic;
-font-size: 1.6rem;
-color: #fcf6ba;
-line-height: 2.4;
-max-width: 850px;
-padding: 40px;
-border-left: 1px solid rgba(252, 246, 186, 0.3);
-border-right: 1px solid rgba(252, 246, 186, 0.3);
-}
-
-.gallery-grid {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 30px;
-width: 100%;
-max-width: 1200px;
-}
-
-.thumb-window {
-width: 300px;
-height: 300px;
-background: rgba(255, 255, 255, 0.02);
-border: 1px solid rgba(191, 149, 63, 0.15);
-border-radius: 20px;
-display: flex;
-justify-content: center;
-align-items: center;
-overflow: hidden;
-padding: 18px;
-transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.thumb-window img {
-max-width: 100%;
-max-height: 100%;
-object-fit: contain;
-border-radius: 10px;
-}
-
-.thumb-window:hover {
-transform: translateY(-15px) scale(1.02);
-background: rgba(255, 255, 255, 0.08);
-border-color: #fcf6ba;
-box-shadow: 0 25px 50px rgba(0,0,0,0.7);
-}
-
-.fade-section { opacity: 0; transform: translateY(60px); }
-canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: -1; }
 </style>
 </head>
-
 <body>
 
-<div class="bg"></div>
-<canvas id="heartCanvas"></canvas>
+<div id="loader">
+  <div style="position:relative;display:flex;align-items:center;justify-content:center;">
+    <div class="ld-ring"></div><div class="ld-h">❤️</div>
+  </div>
+  <div class="ld-t">Loading Our Story...</div>
+</div>
+<div id="prog"></div>
+<div id="cur"></div><div id="cur-r"></div>
+<canvas id="bgCanvas"></canvas>
+<canvas id="petalCanvas"></canvas>
+<canvas id="sparkCanvas"></canvas>
 
-<audio id="bgMusic" loop>
-<source src="audio/background_music.mp3" type="audio/mpeg">
-</audio>
+<!-- LIGHTBOX -->
+<div id="lb"><button id="lb-close">✕</button><img id="lb-img" src="" alt=""></div>
 
-<section>
-<h1 class="gold-text">Yuvaraj ❤️ Ramya</h1>
-<p>“In search of Biriyani... I just lost my heart and peace to you, my love.”<br>
-What began as a random encounter turned into a beautiful destiny that neither of us saw coming.</p>
+<!-- ════ HERO ════ -->
+<section id="hero">
+  <div class="pr" style="width:700px;height:700px;"></div>
+  <div class="pr" style="width:400px;height:400px;animation-delay:2s;"></div>
+  <div class="hero-eye">A Love Story For The Ages</div>
+  <h1 class="hero-n">
+    <span class="gold">Yuvaraj</span>
+    <span style="font-family:'Lato',sans-serif;font-weight:100;font-size:.35em;letter-spacing:10px;color:var(--rose);-webkit-text-fill-color:var(--rose);display:block;margin:8px 0;">❤</span>
+    <span class="gold">Ramya</span>
+  </h1>
+  <div class="hero-div"></div>
+  <p class="hero-q">"In search of Biriyani… I just lost my heart and peace to you, my love."</p>
+  <div class="scroll-cta"><div class="sl"></div><span>Our Story Begins</span></div>
 </section>
 
-<section class="fade-section">
-<h2>The Flavor of First Sight</h2>
-<p>I walked into that wedding hall with a very simple goal: find the food counter. But as the aroma of the biriyani filled the air, my world suddenly shifted. Amidst the clinking of plates and the laughter of strangers, my eyes found yours. The steam cleared, the noise faded into a hum, and for a split second, time simply stopped. I came for a meal, but I left with a memory of a face I knew I could never forget.</p>
-<div class="gallery-grid">
-<div class="thumb-window"><img src="images/biriyani_1.jpg"></div>
-<div class="thumb-window"><img src="images/biriyani_2.jpg"></div>
-<div class="thumb-window"><img src="images/biriyani_3.jpg"></div>
-</div>
+<!-- ════ S1 — BIRIYANI ════ -->
+<section id="s1">
+  <div class="blob" style="background:rgba(100,25,15,.22);width:550px;height:550px;top:-120px;left:-120px;"></div>
+  <div class="lbl rv">Chapter One</div>
+  <h2 class="st rv d1">The Flavor of <em>First Sight</em></h2>
+  <p class="dtag rv d1">A Wedding Hall · The Beginning of Everything</p>
+  <p class="body-p rv d2">I walked in with one mission: find the biriyani counter. But as the aroma filled the air, my world shifted. Amidst the clinking of plates and laughter of strangers, my eyes found yours. The steam cleared, the noise faded — and for a split second, time simply stopped. I came for a meal, but I left carrying a face I could never forget.</p>
+  <div class="triptych rv d3">
+    <div class="ic tall" onclick="openLB(this)">
+      <img src="images/biriyani_1.jpg" alt="First Meeting"><div class="ov"></div><div class="sh"></div>
+    </div>
+    <div class="ic mid" onclick="openLB(this)">
+      <img src="images/biriyani_2.jpg" alt="Wedding Hall"><div class="ov"></div><div class="sh"></div>
+    </div>
+    <div class="ic short" onclick="openLB(this)">
+      <img src="images/biriyani_3.jpg" alt="First Glance"><div class="ov"></div><div class="sh"></div>
+    </div>
+  </div>
 </section>
 
-<section class="fade-section">
-<h2>A Spark in a Question</h2>
-<p>“Where did you get your tattoo?” It was a question I used just to hear you speak, but the way you turned and smiled changed everything. We were strangers, yet there was an unexplainable comfort in that first conversation. In that moment, the 'Infinity' symbol on your skin stopped being just ink—it became a prophecy. I didn't know it then, but that was the first day of the rest of my life.</p>
-<div class="gallery-grid">
-<div class="thumb-window"><img src="images/tattoo_1.jpg"></div>
-<div class="thumb-window"><img src="images/tattoo_2.jpg"></div>
-<div class="thumb-window"><img src="images/tattoo_3.jpg"></div>
-</div>
+<!-- ════ S2 — TATTOO ════ -->
+<section id="s2">
+  <div class="blob" style="background:rgba(60,12,90,.25);width:600px;height:600px;top:-80px;right:-160px;"></div>
+  <div class="lbl rv">Chapter Two</div>
+  <h2 class="st rv d1">A Spark in a <em>Question</em></h2>
+  <p class="dtag rv d1">The Infinity Tattoo · The First Words</p>
+  <p class="body-p rv d2">"Where did you get your tattoo?" A question I used just to hear your voice — and the way you turned and smiled changed everything. In that moment, the <span style="color:var(--gold-l)">Infinity</span> symbol on your skin stopped being just ink. It became a prophecy. I didn't know it then, but that was the first day of the rest of my life.</p>
+  <div class="spread rv d3">
+    <div class="feat" onclick="openLB(this)">
+      <img src="images/tattoo_1.jpg" alt="The Infinity Tattoo"><div class="ov"></div><div class="sh"></div>
+    </div>
+    <div class="stack">
+      <div class="sic" onclick="openLB(this)">
+        <img src="images/tattoo_2.jpg" alt="First Conversation"><div class="ov"></div><div class="sh"></div>
+      </div>
+      <div class="sic" onclick="openLB(this)">
+        <img src="images/tattoo_3.jpg" alt="The Prophecy"><div class="ov"></div><div class="sh"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="fade-section">
-<h2>Digital Echoes & 3 AM Hearts</h2>
-<p>Instagram wasn't just an app for us; it was our bridge. What started as casual story replies soon evolved into deep, late-night paragraphs that lasted until the sun came up. We shared our dreams, our fears, and our silly jokes through the blue glow of our phone screens. Every notification was a heartbeat, and every message was a brick in the foundation of the love we were building in secret.</p>
-<div class="gallery-grid">
-<div class="thumb-window"><img src="images/instagram_1.jpg"></div>
-<div class="thumb-window"><img src="images/instagram_2.jpg"></div>
-<div class="thumb-window"><img src="images/instagram_3.jpg"></div>
-</div>
+<!-- ════ S3 — INSTAGRAM ════ -->
+<section id="s3">
+  <div class="blob" style="background:rgba(18,38,100,.25);width:700px;height:700px;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+  <div class="lbl rv">Chapter Three</div>
+  <h2 class="st rv d1">Digital Echoes &amp; <em>3 AM Hearts</em></h2>
+  <p class="dtag rv d1">Instagram · Late Nights · Building Something Beautiful</p>
+  <p class="body-p rv d2">Instagram wasn't just an app for us — it was our bridge. What started as casual story replies evolved into deep, late-night paragraphs until sunrise. Every notification was a heartbeat. Every message, a brick in the foundation of the love we were quietly building in secret.</p>
+  <div class="pano rv d3">
+    <div class="wide" onclick="openLB(this)">
+      <img src="images/instagram_1.jpg" alt="3AM Conversations"><div class="ov"></div><div class="sh"></div>
+    </div>
+    <div class="pair">
+      <div class="pic" onclick="openLB(this)">
+        <img src="images/instagram_2.jpg" alt="Late Night Messages"><div class="ov"></div><div class="sh"></div>
+      </div>
+      <div class="pic" onclick="openLB(this)">
+        <img src="images/instagram_3.jpg" alt="Midnight Stories"><div class="ov"></div><div class="sh"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="fade-section">
-<h2>The Beauty of Stolen Seconds</h2>
-<p>College life wasn't about the textbooks or the degrees; for us, it was about the 'side gaps.' Those narrow corridors and hidden corners became our sanctuary. We perfected the art of the secret glance and the brief, electric hand-touch that the world wasn't supposed to see. Those stolen seconds felt more valuable than hours, proving that even in a crowd, we were always in a world of our own.</p>
-<div class="gallery-grid">
-<div class="thumb-window"><img src="images/college_1.jpg"></div>
-<div class="thumb-window"><img src="images/college_2.jpg"></div>
-<div class="thumb-window"><img src="images/college_3.jpg"></div>
-</div>
+<!-- ════ S4 — COLLEGE ════ -->
+<section id="s4">
+  <div class="blob" style="background:rgba(90,55,8,.2);width:500px;height:500px;bottom:-80px;left:-60px;"></div>
+  <div class="lbl rv">Chapter Four</div>
+  <h2 class="st rv d1">The Beauty of <em>Stolen Seconds</em></h2>
+  <p class="dtag rv d1">College Corridors · Hidden Glances · Our Secret World</p>
+  <p class="body-p rv d2">College life wasn't about textbooks — for us, it was about the 'side gaps.' Those narrow corridors and hidden corners became our sanctuary. We perfected the art of the secret glance and the brief, electric hand-touch the world wasn't supposed to see. Those stolen seconds felt more valuable than hours.</p>
+  <div class="triptych rv d3">
+    <div class="ic short" onclick="openLB(this)">
+      <img src="images/college_1.jpg" alt="College Days"><div class="ov"></div><div class="sh"></div>
+    </div>
+    <div class="ic tall" onclick="openLB(this)">
+      <img src="images/college_2.jpg" alt="Hidden Glances"><div class="ov"></div><div class="sh"></div>
+    </div>
+    <div class="ic mid" onclick="openLB(this)">
+      <img src="images/college_3.jpg" alt="Stolen Moments"><div class="ov"></div><div class="sh"></div>
+    </div>
+  </div>
 </section>
 
-<section class="fade-section">
-<h2 class="gold-text">The Silent Storm</h2>
-<p>Every great love story has its test, and ours was the silence. When the world tried to pull us apart and cut our connection, we didn't give up. We became rebels for love. From neighbors carrying our handwritten notes to friends playing the role of secret allies, we fought back. I remember the adrenaline of hijacking Grandmother’s phone just to hear your voice for sixty seconds—a reminder that no wall was high enough to keep me from you.</p>
-<div class="gallery-grid">
-<div class="thumb-window"><img src="images/storm_1.jpg"></div>
-<div class="thumb-window"><img src="images/storm_2.jpg"></div>
-<div class="thumb-window"><img src="images/storm_3.jpg"></div>
-</div>
+<!-- ════ S5 — STORM ════ -->
+<section id="s5">
+  <div class="blob" style="background:rgba(90,8,28,.3);width:700px;height:700px;top:0;right:-180px;"></div>
+  <div class="lbl rv">Chapter Five</div>
+  <h2 class="st gold rv d1">The Silent <em>Storm</em></h2>
+  <p class="dtag rv d1">The Test · The Fight · The Proof of Our Love</p>
+  <p class="body-p rv d2">When the world tried to pull us apart, we became rebels for love. From neighbours carrying handwritten notes to friends playing secret allies — we fought back. I remember the adrenaline of hijacking Grandmother's phone just to hear your voice for sixty seconds. No wall was ever high enough to keep me from you.</p>
+  <div class="diamond-grid rv d3">
+    <div class="dc" onclick="openLB(this)">
+      <img src="images/storm_1.jpg" alt="The Storm"><div class="ov"></div>
+    </div>
+    <div class="dc" onclick="openLB(this)">
+      <img src="images/storm_2.jpg" alt="Handwritten Notes"><div class="ov"></div>
+    </div>
+    <div class="dc" onclick="openLB(this)">
+      <img src="images/storm_3.jpg" alt="We Survived"><div class="ov"></div>
+    </div>
+  </div>
 </section>
 
-<section class="fade-section">
-<h2>29 August 2026 — The Vow</h2>
-<p>The morning of August 29th was different. The air in the temple felt sacred, and the sound of the bells felt like a victory song. After all the struggles, the secrets, and the silence, we finally stood before the divine as one. When I tied that knot, I wasn't just promising a future; I was thanking the universe for giving me the strength to win you. That day, you didn't just become my wife—you became my destiny.</p>
-<div class="gallery-grid">
-<div class="thumb-window"><img src="images/wedding_1.jpg"></div>
-<div class="thumb-window"><img src="images/wedding_2.jpg"></div>
-<div class="thumb-window"><img src="images/wedding_3.jpg"></div>
-</div>
+<!-- ════ S6 — WEDDING ════ -->
+<section id="s6">
+  <div class="blob" style="background:rgba(150,100,10,.16);width:900px;height:900px;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+  <div class="lbl rv">Chapter Six</div>
+  <div class="date-banner rv d1">
+    <div class="date-num gold">29 · August</div>
+  </div>
+  <h2 class="st rv d1">The Day I Called You <em>Mine, Forever</em></h2>
+  <p class="dtag rv d1">29 August 2026 · The Temple · Our Victory</p>
+  <p class="body-p rv d2">The morning of August 29th was different. The air in the temple felt sacred, the bells sounded like a victory song. After all the struggles and secrets — we finally stood before the divine as one. When I tied that knot, I wasn't just promising a future; I was thanking the universe for giving me the strength to win you. That day, you became my destiny.</p>
+  <div class="wg rv d3">
+    <div class="wg-top">
+      <div class="wc sm" onclick="openLB(this)">
+        <img src="images/wedding_1.jpg" alt="The Sacred Morning"><div class="ov"></div><div class="gb"></div>
+      </div>
+      <div class="wc lg" onclick="openLB(this)">
+        <img src="images/wedding_2.jpg" alt="The Vow"><div class="ov"></div><div class="gb"></div>
+      </div>
+      <div class="wc sm" onclick="openLB(this)">
+        <img src="images/wedding_3.jpg" alt="Our Destiny"><div class="ov"></div><div class="gb"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="fade-section">
-<h2>Across Borders, Hand in Hand</h2>
-<p>From the bustling, vibrant streets of Malaysia to the spiritual sunsets of Bali, the world became our playground. But I realized something on those flights and long walks—the scenery didn't matter as much as the person standing next to me. Whether we were lost in a foreign city or sitting on a quiet beach, 'home' wasn't a coordinate on a map anymore. Home was simply wherever your hand was in mine.</p>
-<div class="gallery-grid">
-<div class="thumb-window"><img src="images/honeymoon_1.jpg"></div>
-<div class="thumb-window"><img src="images/honeymoon_2.jpg"></div>
-<div class="thumb-window"><img src="images/honeymoon_3.jpg"></div>
-</div>
+<!-- ════ S7 — HONEYMOON ════ -->
+<section id="s7">
+  <div class="blob" style="background:rgba(10,55,110,.22);width:650px;height:650px;bottom:-80px;right:-100px;"></div>
+  <div class="lbl rv">Chapter Seven</div>
+  <h2 class="st rv d1">Across Borders, <em>Hand in Hand</em></h2>
+  <p class="dtag rv d1">Malaysia · Bali · Wherever You Are Is Home</p>
+  <p class="body-p rv d2">From the vibrant streets of Malaysia to the spiritual sunsets of Bali, the world became our playground. But somewhere on those flights and long walks, I realized — the scenery didn't matter as much as the person beside me. Whether lost in a foreign city or sitting on a quiet beach, 'home' was simply wherever your hand was in mine.</p>
+  <div class="spread rv d3">
+    <div class="stack">
+      <div class="sic" onclick="openLB(this)">
+        <img src="images/honeymoon_1.jpg" alt="Malaysia"><div class="ov"></div><div class="sh"></div>
+      </div>
+      <div class="sic" onclick="openLB(this)">
+        <img src="images/honeymoon_2.jpg" alt="Bali Sunsets"><div class="ov"></div><div class="sh"></div>
+      </div>
+    </div>
+    <div class="feat" onclick="openLB(this)">
+      <img src="images/honeymoon_3.jpg" alt="Hand in Hand"><div class="ov"></div><div class="sh"></div>
+    </div>
+  </div>
 </section>
 
-<section class="fade-section">
-<h2>The Beautiful Chaos of Us</h2>
-<p>Real love isn't just about the sunsets; it's about the mood swings, the playful jealousy, and the stubborn arguments that always end in laughter. I love the way we gossip about the world, the way we understand each other's silence, and even the way you get annoyed with me. This messy, unpredictable, and chaotic life we share is more perfect than any fairy tale I could have ever imagined.</p>
-<div class="gallery-grid">
-<div class="thumb-window"><img src="images/everyday_1.jpg"></div>
-<div class="thumb-window"><img src="images/everyday_2.jpg"></div>
-<div class="thumb-window"><img src="images/everyday_3.jpg"></div>
-</div>
+<!-- ════ S8 — CHAOS ════ -->
+<section id="s8">
+  <div class="blob" style="background:rgba(75,15,65,.22);width:520px;height:520px;top:-60px;left:-100px;"></div>
+  <div class="lbl rv">Chapter Eight</div>
+  <h2 class="st rv d1">The Beautiful <em>Chaos of Us</em></h2>
+  <p class="dtag rv d1">Every Day · Every Argument · Every Laugh</p>
+  <p class="body-p rv d2">Real love isn't just about sunsets — it's about the mood swings, playful jealousy, and stubborn arguments that always end in laughter. I love the way we gossip about the world, understand each other's silence, and even the way you get annoyed with me. This messy, chaotic life we share is more perfect than any fairy tale I could have imagined.</p>
+  <div class="pano rv d3">
+    <div class="wide" onclick="openLB(this)">
+      <img src="images/everyday_1.jpg" alt="Beautiful Chaos"><div class="ov"></div><div class="sh"></div>
+    </div>
+    <div class="pair">
+      <div class="pic" onclick="openLB(this)">
+        <img src="images/everyday_2.jpg" alt="Arguments and Laughter"><div class="ov"></div><div class="sh"></div>
+      </div>
+      <div class="pic" onclick="openLB(this)">
+        <img src="images/everyday_3.jpg" alt="Our World"><div class="ov"></div><div class="sh"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="fade-section">
-<h2 class="gold-text">My Infinite Promise</h2>
-<div class="love-note-text">
-Ramya, thank you for being the woman who stayed when things were hard and laughed when things were easy. You are my peace, my partner, and my greatest adventure. As we look toward the future, I promise to keep choosing you, every single day, in every single lifetime.<br><br>
-To Infinity and Beyond, My Love.
-</div>
-<div class="gallery-grid" style="margin-top: 60px;">
-<div class="thumb-window"><img src="images/future_1.jpg"></div>
-<div class="thumb-window"><img src="images/future_2.jpg"></div>
-<div class="thumb-window"><img src="images/future_3.jpg"></div>
-</div>
+<!-- ════ PROMISE ════ -->
+<section id="promise">
+  <div class="blob" style="background:rgba(110,75,8,.2);width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+  <div class="lbl rv">Forever &amp; Always</div>
+  <h2 class="st gold rv d1">My Infinite <em>Promise</em></h2>
+  <div class="orn rv d1">
+    <div class="orn-l"></div><div class="orn-d"></div><div class="orn-d2"></div><div class="orn-d"></div><div class="orn-l"></div>
+  </div>
+  <div class="letter rv d2">
+    <div class="lc tl"></div><div class="lc tr"></div><div class="lc bl"></div><div class="lc br"></div>
+    <p class="lt">Ramya, thank you for being the woman who stayed when things were hard and laughed when things were easy. You are my peace, my partner, and my greatest adventure.<br><br>As we look toward the future, I promise to keep choosing you — every single day, in every single lifetime. You are the reason the universe made me, and I will spend every breath proving I was worth finding at that biriyani counter.</p>
+    <div class="ls">— To Infinity and Beyond, My Love &nbsp;·&nbsp; Yuvaraj ❤</div>
+  </div>
+  <div class="mline rv d3" style="margin-top:60px;"></div>
+  <div class="triptych rv d4" style="margin-top:20px;">
+    <div class="ic mid" onclick="openLB(this)">
+      <img src="images/future_1.jpg" alt="Today Tomorrow Always"><div class="ov"></div><div class="sh"></div>
+    </div>
+    <div class="ic tall" onclick="openLB(this)">
+      <img src="images/future_2.jpg" alt="Our Story Without End"><div class="ov"></div><div class="sh"></div>
+    </div>
+    <div class="ic mid" onclick="openLB(this)">
+      <img src="images/future_3.jpg" alt="Every Lifetime I Choose You"><div class="ov"></div><div class="sh"></div>
+    </div>
+  </div>
 </section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="ft-h">❤️</div>
+  <div class="ft-n rv">Y U V A R A J &nbsp;·&nbsp; R A M Y A</div>
+  <div class="ft-t rv d1">To Infinity and Beyond &nbsp;·&nbsp; Our Eternal Story</div>
+</footer>
+
+<audio id="bgMusic" loop><source src="audio/background_music.mp3" type="audio/mpeg"></audio>
 
 <script>
-gsap.registerPlugin(ScrollTrigger);
-gsap.utils.toArray(".fade-section").forEach(sec => {
-gsap.to(sec, { scrollTrigger: { trigger: sec, start: "top 85%" }, opacity: 1, y: 0, duration: 1.5, ease: "power2.out" });
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),crr=document.getElementById('cur-r');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function animC(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;crr.style.left=rx+'px';crr.style.top=ry+'px';requestAnimationFrame(animC);})();
+document.querySelectorAll('.ic,.sic,.feat,.wide,.pic,.dc,.wc,.ww').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';crr.style.width='55px';crr.style.height='55px';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';crr.style.width='36px';crr.style.height='36px';});
 });
 
-const canvas = document.getElementById("heartCanvas");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-let hearts = [];
-for(let i=0; i<30; i++){
-hearts.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, size: Math.random()*8+4, speed: Math.random()*0.4+0.1 });
-}
-function drawHeart(x, y, size) {
-ctx.beginPath(); ctx.moveTo(x, y);
-ctx.bezierCurveTo(x-size/2, y-size/2, x-size, y+size/3, x, y+size);
-ctx.bezierCurveTo(x+size, y+size/3, x+size/2, y-size/2, x, y);
-ctx.fillStyle = "rgba(252, 246, 186, 0.2)"; ctx.fill();
-}
-function animate() {
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-hearts.forEach(h => { drawHeart(h.x, h.y, h.size); h.y += h.speed; if(h.y > canvas.height) h.y = -20; });
-requestAnimationFrame(animate);
-}
-animate();
+/* ── LOADER ── */
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('out'),700));
 
-window.addEventListener('click', () => {
-const audio = document.getElementById('bgMusic');
-if(audio.paused) audio.play();
-}, { once: true });
+/* ── PROGRESS ── */
+window.addEventListener('scroll',()=>{document.getElementById('prog').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';});
+
+/* ── LIGHTBOX ── */
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lb-img');
+function openLB(card){const img=card.querySelector('img');if(img){lbImg.src=img.src;lb.classList.add('open');}}
+document.getElementById('lb-close').onclick=()=>lb.classList.remove('open');
+lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('open');});
+
+/* ── BG CANVAS: stars + soft nebula ── */
+const bc=document.getElementById('bgCanvas'),bx=bc.getContext('2d');
+bc.width=window.innerWidth;bc.height=window.innerHeight;
+const stars=Array.from({length:230},()=>({x:Math.random()*bc.width,y:Math.random()*bc.height,r:Math.random()*1.5+.2,phase:Math.random()*Math.PI*2,sp:Math.random()*.004+.001}));
+const nebula=[
+  {x:bc.width*.12,y:bc.height*.18,rx:320,ry:220,c:'rgba(139,26,44,.06)'},
+  {x:bc.width*.82,y:bc.height*.55,rx:380,ry:260,c:'rgba(55,15,90,.08)'},
+  {x:bc.width*.45,y:bc.height*.88,rx:300,ry:200,c:'rgba(201,168,76,.035)'},
+];
+(function animBg(){
+  bx.clearRect(0,0,bc.width,bc.height);
+  const t=Date.now()*.001;
+  nebula.forEach(n=>{
+    bx.save();bx.scale(1,n.ry/n.rx);
+    const g=bx.createRadialGradient(n.x,n.y*(n.rx/n.ry),0,n.x,n.y*(n.rx/n.ry),n.rx);
+    g.addColorStop(0,n.c);g.addColorStop(1,'transparent');
+    bx.fillStyle=g;bx.fillRect(0,0,bc.width,bc.height*(n.rx/n.ry));
+    bx.restore();
+  });
+  stars.forEach(s=>{
+    const a=(Math.sin(t*s.sp*60+s.phase)+1)/2*.65+.12;
+    bx.beginPath();bx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    bx.fillStyle=`rgba(255,240,200,${a})`;bx.fill();
+  });
+  requestAnimationFrame(animBg);
+})();
+
+/* ── PETAL CANVAS ── */
+const pc=document.getElementById('petalCanvas'),px=pc.getContext('2d');
+pc.width=window.innerWidth;pc.height=window.innerHeight;
+const petals=[];
+const PT=[
+  (c,x,y,s,a)=>{c.globalAlpha=a;c.font=s+'px serif';c.fillText('❤',x,y);c.globalAlpha=1;},
+  (c,x,y,s,a)=>{c.globalAlpha=a;c.font=(s*.9)+'px serif';c.fillText('🌸',x,y);c.globalAlpha=1;},
+  (c,x,y,s,a)=>{c.globalAlpha=a;c.font=(s*.7)+'px serif';c.fillText('✨',x,y);c.globalAlpha=1;},
+  (c,x,y,s,a)=>{c.globalAlpha=a;c.beginPath();c.arc(x,y,s*.22,0,Math.PI*2);c.fillStyle=`rgba(201,168,76,${a})`;c.fill();},
+  (c,x,y,s,a)=>{c.globalAlpha=a;c.font=(s*.65)+'px serif';c.fillText('💫',x,y);c.globalAlpha=1;},
+  (c,x,y,s,a)=>{c.globalAlpha=a;c.font=(s*.75)+'px serif';c.fillText('🌹',x,y);c.globalAlpha=1;},
+  (c,x,y,s,a)=>{c.globalAlpha=a;c.font=(s*.6)+'px serif';c.fillText('💕',x,y);c.globalAlpha=1;},
+];
+function spawnPetal(){
+  petals.push({type:Math.floor(Math.random()*PT.length),x:Math.random()*pc.width,y:-20,vx:(Math.random()-.5)*.8,vy:Math.random()*.5+.25,rot:Math.random()*Math.PI*2,rsp:(Math.random()-.5)*.03,size:Math.random()*18+7,life:0,maxLife:Math.random()*380+160});
+}
+setInterval(spawnPetal,350);
+(function animP(){
+  px.clearRect(0,0,pc.width,pc.height);
+  for(let i=petals.length-1;i>=0;i--){
+    const p=petals[i];p.x+=p.vx;p.y+=p.vy;p.rot+=p.rsp;p.life++;
+    if(p.life>p.maxLife){petals.splice(i,1);continue;}
+    const prog=p.life/p.maxLife;
+    const a=prog<.1?prog*10*.7:(1-prog)*.7;
+    px.save();px.translate(p.x,p.y);px.rotate(p.rot);
+    PT[p.type](px,0,0,p.size,a);
+    px.restore();
+  }
+  requestAnimationFrame(animP);
+})();
+
+/* ── SPARK CANVAS: rising embers ── */
+const sc=document.getElementById('sparkCanvas'),sx=sc.getContext('2d');
+sc.width=window.innerWidth;sc.height=window.innerHeight;
+const sparks=[];
+const SC=['rgba(201,168,76,','rgba(232,52,90,','rgba(255,210,120,','rgba(255,140,170,','rgba(255,200,80,'];
+function spawnSpark(){
+  sparks.push({x:Math.random()*sc.width,y:sc.height+6,vx:(Math.random()-.5)*.5,vy:-(Math.random()*.4+.12),r:Math.random()*2.2+.4,col:SC[Math.floor(Math.random()*SC.length)],life:0,maxLife:Math.random()*280+130});
+}
+setInterval(spawnSpark,70);
+(function animS(){
+  sx.clearRect(0,0,sc.width,sc.height);
+  for(let i=sparks.length-1;i>=0;i--){
+    const p=sparks[i];p.x+=p.vx;p.y+=p.vy;p.life++;
+    if(p.life>p.maxLife){sparks.splice(i,1);continue;}
+    const prog=p.life/p.maxLife;
+    const a=prog<.1?prog*10*.5:(1-prog)*.5;
+    sx.beginPath();sx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    sx.fillStyle=p.col+a+')';sx.fill();
+  }
+  requestAnimationFrame(animS);
+})();
+
+/* ── CLICK BURST ── */
+document.addEventListener('click',e=>{
+  if(e.target.closest('#lb')||e.target.id==='lb-close')return;
+  const em=['❤️','💕','💗','✨','🌹','💫','🌸'];
+  for(let i=0;i<9;i++){
+    const el=document.createElement('div');
+    el.textContent=em[Math.floor(Math.random()*em.length)];
+    el.style.cssText=`position:fixed;left:${e.clientX}px;top:${e.clientY}px;font-size:${Math.random()*18+10}px;pointer-events:none;z-index:9985;transform:translate(-50%,-50%);transition:all .95s cubic-bezier(.16,1,.3,1);`;
+    document.body.appendChild(el);
+    const ang=(i/9)*Math.PI*2+Math.random()*.3,dist=Math.random()*80+45;
+    setTimeout(()=>{el.style.left=(e.clientX+Math.cos(ang)*dist)+'px';el.style.top=(e.clientY+Math.sin(ang)*dist)+'px';el.style.opacity='0';el.style.fontSize='6px';},10);
+    setTimeout(()=>el.remove(),960);
+  }
+});
+
+/* ── SCROLL REVEAL ── */
+const rv=new IntersectionObserver(en=>en.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>rv.observe(el));
+
+/* ── SUBTLE PARALLAX on image groups ── */
+window.addEventListener('mousemove',e=>{
+  const dx=(e.clientX/window.innerWidth-.5)*12,dy=(e.clientY/window.innerHeight-.5)*6;
+  document.querySelectorAll('.triptych,.spread,.pano,.diamond-grid,.wg').forEach(g=>{
+    g.style.transform=`translate(${dx*.18}px,${dy*.18}px)`;
+  });
+});
+
+/* ── AUDIO ── */
+window.addEventListener('click',()=>{const a=document.getElementById('bgMusic');if(a&&a.paused)a.play().catch(()=>{});},{once:true});
+
+/* ── RESIZE ── */
+window.addEventListener('resize',()=>{[bc,pc,sc].forEach(c=>{c.width=window.innerWidth;c.height=window.innerHeight;});});
 </script>
-
 </body>
 </html>
